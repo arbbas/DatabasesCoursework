@@ -1,0 +1,242 @@
+CREATE DATABASE scientific_publication_archive;
+
+CREATE TABLE IF NOT EXISTS editor (
+    editor_ID INT (8) NOT NULL UNIQUE,
+    editor_first_name VARCHAR (25) NOT NULL,
+    editor_last_name VARCHAR (25) NOT NULL,
+    PRIMARY KEY (editor_ID)
+);
+
+CREATE TABLE IF NOT EXISTS publisher (
+    publisher_ID INT (8) NOT NULL UNIQUE,
+    publisher_name VARCHAR (25) NOT NULL,
+    publisher_location VARCHAR (25) NOT NULL, 
+    PRIMARY KEY (publisher_ID)
+);
+
+CREATE TABLE IF NOT EXISTS author (
+    author_ID INT (8) NOT NULL UNIQUE,
+    author_first_name VARCHAR (25) NOT NULL,
+    author_last_name VARCHAR (25) NOT NULL,
+    PRIMARY KEY (author_ID)
+);
+
+CREATE TABLE IF NOT EXISTS scientific_subject (
+    subject_ID INT (8) NOT NULL UNIQUE,
+    field_of_research VARCHAR (40) NOT NULL,
+    subject VARCHAR (40) NOT NULL,
+    PRIMARY KEY (subject_ID)
+);
+
+CREATE TABLE IF NOT EXISTS journal_article (
+    journal_ID INT (8) NOT NULL UNIQUE,
+    journal_article_title VARCHAR (150) NOT NULL,
+    journal_title VARCHAR (100) NOT NULL,
+    year_of_publication YEAR NOT NULL,
+    volume_number INT (5) NOT NULL,
+    page_numbers_of_article VARCHAR (20) NOT NULL,
+    hyperlink VARCHAR (256) NOT NULL,
+    abstract VARCHAR (5000) NOT NULL,
+    PRIMARY KEY (journal_ID)
+);
+
+CREATE TABLE IF NOT EXISTS thesis (
+    thesis_ID INT (8) NOT NULL UNIQUE,
+    title VARCHAR (150) NOT NULL,
+    thesis_type VARCHAR (20) NOT NULL,
+    year_of_publication YEAR NOT NULL,
+    hyperlink VARCHAR (256) NOT NULL,
+    abstract VARCHAR (5000) NOT NULL,
+    PRIMARY KEY (thesis_ID)
+);
+
+CREATE TABLE IF NOT EXISTS book (
+    book_ID INT (8) NOT NULL UNIQUE,
+    book_title VARCHAR (150) NOT NULL,
+    series_title VARCHAR (100) NOT NULL,
+    edition INT (4) NOT NULL,
+    place_of_publication VARCHAR (50) NOT NULL,
+    year_of_publication YEAR NOT NULL,
+    publisher_ID INT (8) NOT NULL,
+    hyperlink VARCHAR (256) NOT NULL,
+    abstract VARCHAR (5000) NOT NULL,
+    PRIMARY KEY (book_ID),
+    FOREIGN KEY (publisher_ID) REFERENCES publisher(publisher_ID)
+);
+
+CREATE TABLE IF NOT EXISTS conference_paper_proceedings (
+    conference_paper_proceedings_ID INT (8) NOT NULL UNIQUE,
+    conference_paper_title VARCHAR (150) NOT NULL,
+    title_of_conference VARCHAR (150) NOT NULL,
+    place_of_publication VARCHAR (50) NOT NULL,
+    year_of_publication YEAR NOT NULL,
+    publisher_ID INT (8) NOT NULL,
+    hyperlink VARCHAR (256) NOT NULL,
+    abstract VARCHAR (5000) NOT NULL,
+    PRIMARY KEY (conference_paper_proceedings_ID),
+    FOREIGN KEY (publisher_ID) REFERENCES publisher(publisher_ID)
+);
+
+CREATE TABLE IF NOT EXISTS user (
+    user_ID INT (8) NOT NULL UNIQUE,
+    user_name VARCHAR (20) NOT NULL UNIQUE,
+    isauthor bool,
+    isreader bool,
+    user_first_name VARCHAR (25) DEFAULT NULL,
+    user_last_name VARCHAR (25) DEFAULT NULL,
+    phone_number VARCHAR (20) NOT NULL UNIQUE,
+    email_address VARCHAR (50) NOT NULL UNIQUE,
+    contact_preference VARCHAR (10) NOT NULL DEFAULT 'Email',
+    PRIMARY KEY (user_ID)
+);
+
+CREATE TABLE IF NOT EXISTS user_library (
+    library_ID INT (8) NOT NULL UNIQUE,
+    user_ID INT (8) NOT NULL,
+    last_access DATETIME NOT NULL,
+    conference_paper_proceedings_ID INT (8) DEFAULT NULL,
+    book_ID INT (8) DEFAULT NULL,
+    journal_ID INT (8) DEFAULT NULL,
+    thesis_ID INT (8) DEFAULT NULL,
+    FOREIGN KEY (conference_paper_proceedings_ID) REFERENCES conference_paper_proceedings(conference_paper_proceedings_ID),
+    FOREIGN KEY (book_ID) REFERENCES book(book_ID),
+    FOREIGN KEY (journal_ID) REFERENCES journal_article(journal_ID),
+    FOREIGN KEY (thesis_ID) REFERENCES thesis(thesis_ID),
+    FOREIGN KEY (user_ID) REFERENCES user(user_ID),
+    PRIMARY KEY (library_ID)
+);
+
+CREATE TABLE IF NOT EXISTS publication_review (
+    pub_rev_ID INT (8) NOT NULL UNIQUE,
+    user_ID INT (8) NOT NULL,
+    review_score INT (2) NOT NULL,
+    short_review VARCHAR (1000) DEFAULT NULL,
+    conference_paper_proceedings_ID INT (8) DEFAULT NULL,
+    publication_type VARCHAR (10) DEFAULT NULL,
+    book_ID INT (8) DEFAULT NULL,
+    journal_ID INT (8) DEFAULT NULL,
+    thesis_ID INT (8) DEFAULT NULL,
+    CHECK (
+        review_score BETWEEN 1
+        AND 10
+    ),
+    FOREIGN KEY (conference_paper_proceedings_ID) REFERENCES conference_paper_proceedings(conference_paper_proceedings_ID),
+    FOREIGN KEY (book_ID) REFERENCES book(book_ID),
+    FOREIGN KEY (journal_ID) REFERENCES journal_article(journal_ID),
+    FOREIGN KEY (thesis_ID) REFERENCES thesis(thesis_ID),
+    FOREIGN KEY (user_ID) REFERENCES user(user_ID),
+    PRIMARY KEY (pub_rev_ID)
+);
+
+CREATE TABLE IF NOT EXISTS author_review (
+    author_rev_ID INT (8) NOT NULL UNIQUE,
+    user_ID INT (8) NOT NULL,
+    author_ID INT (8) NOT NULL,
+    review_score INT (2) NOT NULL,
+    CHECK (
+        review_score BETWEEN 1
+        AND 10
+    ),
+    FOREIGN KEY (user_ID) REFERENCES user(user_ID),
+    FOREIGN KEY (author_ID) REFERENCES author(author_ID),
+    PRIMARY KEY (author_rev_ID)
+);
+
+CREATE TABLE IF NOT EXISTS user_subject_interests (
+    user_subject_interests_ID INT (8) NOT NULL UNIQUE,
+    user_ID INT (8) NOT NULL,
+    subject_ID INT (8) NOT NULL,
+    FOREIGN KEY (user_ID) REFERENCES user(user_ID),
+    FOREIGN KEY (subject_ID) REFERENCES scientific_subject(subject_ID),
+    PRIMARY KEY (user_subject_interests_ID)
+);
+
+CREATE TABLE IF NOT EXISTS author_conference_paper_proceedings (
+    author_conference_paper_proceedings_ID INT (8) NOT NULL UNIQUE,
+    author_ID INT (8) NOT NULL,
+    conference_paper_proceedings_ID INT (8) NOT NULL,
+    FOREIGN KEY (author_ID) REFERENCES author(author_ID),
+    FOREIGN KEY (conference_paper_proceedings_ID) REFERENCES conference_paper_proceedings(conference_paper_proceedings_ID),
+    PRIMARY KEY (author_conference_paper_proceedings_ID)
+);
+
+CREATE TABLE IF NOT EXISTS author_book (
+    author_book_ID INT (8) NOT NULL UNIQUE,
+    author_ID INT (8) NOT NULL,
+    book_ID INT (8) NOT NULL,
+    FOREIGN KEY (author_ID) REFERENCES author(author_ID),
+    FOREIGN KEY (book_ID) REFERENCES book(book_ID),
+    PRIMARY KEY (author_book_ID)
+);
+
+CREATE TABLE IF NOT EXISTS author_journal_article (
+    author_journal_article_ID INT (8) NOT NULL UNIQUE,
+    author_ID INT (8) NOT NULL,
+    journal_article_ID INT (8) NOT NULL,
+    FOREIGN KEY (author_ID) REFERENCES author(author_ID),
+    FOREIGN KEY (journal_article_ID) REFERENCES journal_article(journal_ID),
+    PRIMARY KEY (author_journal_article_ID)
+);
+
+CREATE TABLE IF NOT EXISTS author_thesis (
+    author_thesis_ID INT (8) NOT NULL UNIQUE,
+    author_ID INT (8) NOT NULL,
+    thesis_ID INT (8) NOT NULL,
+    FOREIGN KEY (author_ID) REFERENCES author(author_ID),
+    FOREIGN KEY (thesis_ID) REFERENCES thesis(thesis_ID),
+    PRIMARY KEY (author_thesis_ID)
+);
+
+CREATE TABLE IF NOT EXISTS conference_paper_proceedings_subject (
+    conference_paper_proceedings_subject_ID INT (8) NOT NULL UNIQUE,
+    author_ID INT (8) NOT NULL,
+    conference_paper_proceedings_ID INT (8) NOT NULL,
+    FOREIGN KEY (author_ID) REFERENCES author(author_ID),
+    FOREIGN KEY (conference_paper_proceedings_ID) REFERENCES conference_paper_proceedings(conference_paper_proceedings_ID),
+    PRIMARY KEY (conference_paper_proceedings_subject_ID)
+);
+
+CREATE TABLE IF NOT EXISTS book_subject (
+    book_subject_ID INT (8) NOT NULL UNIQUE,
+    author_ID INT (8) NOT NULL,
+    book_ID INT (8) NOT NULL,
+    FOREIGN KEY (author_ID) REFERENCES author(author_ID),
+    FOREIGN KEY (book_ID) REFERENCES book(book_ID),
+    PRIMARY KEY (book_subject_ID)
+);
+
+CREATE TABLE IF NOT EXISTS journal_article_subject (
+    journal_article_subject_ID INT (8) NOT NULL UNIQUE,
+    author_ID INT (8) NOT NULL,
+    journal_ID INT (8) NOT NULL,
+    FOREIGN KEY (author_ID) REFERENCES author(author_ID),
+    FOREIGN KEY (journal_ID) REFERENCES journal_article(journal_ID),
+    PRIMARY KEY (journal_article_subject_ID)
+);
+
+CREATE TABLE IF NOT EXISTS thesis_subject (
+    thesis_subject_ID INT (8) NOT NULL UNIQUE,
+    author_ID INT (8) NOT NULL,
+    thesis_ID INT (8) NOT NULL,
+    FOREIGN KEY (author_ID) REFERENCES author(author_ID),
+    FOREIGN KEY (thesis_ID) REFERENCES thesis(thesis_ID),
+    PRIMARY KEY (thesis_subject_ID)
+);
+
+CREATE TABLE IF NOT EXISTS editor_conference_paper_proceedings (
+    editor_conference_paper_proceedings_ID INT (8) NOT NULL UNIQUE,
+    editor_ID INT (8) NOT NULL,
+    conference_paper_proceedings_ID INT (8) NOT NULL,
+    FOREIGN KEY (editor_ID) REFERENCES editor(editor_ID),
+    FOREIGN KEY (conference_paper_proceedings_ID) REFERENCES conference_paper_proceedings(conference_paper_proceedings_ID),
+    PRIMARY KEY (editor_conference_paper_proceedings_ID)
+);
+
+CREATE TABLE IF NOT EXISTS editor_book (
+    editor_book_ID INT (8) NOT NULL UNIQUE,
+    editor_ID INT (8) NOT NULL,
+    book_ID INT (8) NOT NULL,
+    FOREIGN KEY (editor_ID) REFERENCES editor(editor_ID),
+    FOREIGN KEY (book_ID) REFERENCES book(book_ID),
+    PRIMARY KEY (editor_book_ID)
+);
