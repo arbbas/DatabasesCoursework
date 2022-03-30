@@ -1,0 +1,1257 @@
+INSERT INTO
+    publisher (publisher_ID, publisher_name, publisher_location)
+VALUES
+    (1, 'IEEE', 'Manhattan, New York, USA');
+
+INSERT INTO
+    conference_paper_proceedings (
+        conference_paper_proceedings_ID,
+        conference_paper_title,
+        title_of_conference,
+        place_of_publication,
+        year_of_publication,
+        publisher_ID,
+        hyperlink,
+        abstract,
+        DOI
+    )
+VALUES
+    (
+        1,
+        'Development of a Digital Game-Based Learning System with Graduated Prompting Strategy for Math Course',
+        'IIAI International Conference on Advanced Applied Informatics (IIAIAAI)',
+        'Kumamoto, Japan',
+        2016,
+        1,
+        'https://ieeexplore.ieee.org/document/7557647',
+        'Many studies indicated that digital game-based learning can enhance students learning motivation effectively,
+        but it also needs appropriate tools
+        or strategies to improve the learning achievement.The purpose of this study is to develop a digital game - based learning system with a graduated prompting strategy,
+        so that students can consolidate concepts
+        and skills of problem - solving,
+        and further strength retention
+        and transfer by graduated prompting strategy progressively
+        and repeatedly.This study investigates the influence of students learning motivation and achievement by using the proposed digital game-based learning system in the math courses.',
+        '10.1109/IIAI-AAI.2016.152'
+    );
+
+INSERT INTO
+    author (author_ID, author_first_name, author_last_name)
+VALUES
+    (1, 'Kai-Hsiang', 'Yang'),
+    (2, 'Jhen-Yuan', 'Chen');
+
+INSERT INTO
+    editor (editor_ID, editor_first_name, editor_last_name)
+VALUES
+    (1, 'Bou-Chuan', 'Lu');
+
+INSERT INTO
+    scientific_subject (subject_ID, subject)
+VALUES
+    (
+        1,
+        'Gamification of learning'
+    );
+
+INSERT INTO
+    conference_paper_proceedings_subject (
+        conference_paper_proceedings_subject_ID,
+        subject_ID,
+        conference_paper_proceedings_ID
+    )
+VALUES
+    (1, 1, 1);
+
+INSERT INTO
+    author_conference_paper_proceedings (
+        author_conference_paper_proceedings_ID,
+        author_ID,
+        conference_paper_proceedings_ID
+    )
+VALUES
+    (1, 1, 1),
+    (2, 2, 1);
+
+INSERT INTO
+    editor_conference_paper_proceedings (
+        editor_conference_paper_proceedings_ID,
+        editor_ID,
+        conference_paper_proceedings_ID
+    )
+VALUES
+    (1, 1, 1);
+
+INSERT INTO
+    conference_paper_proceedings (
+        conference_paper_proceedings_ID,
+        conference_paper_title,
+        title_of_conference,
+        place_of_publication,
+        year_of_publication,
+        publisher_ID,
+        hyperlink,
+        abstract,
+        DOI
+    )
+VALUES
+    (
+        2,
+        'Effects of the Interactive Concept Map Instant-Feedback Approach in a Visual Reality Learning Environment in Astronomy Courses',
+        '2018 7th International Congress on Advanced Applied Informatics (IIAI-AAI)',
+        'Yonago, Japan',
+        2018,
+        1,
+        'https://ieeexplore.ieee.org/document/8693304',
+        'It has been reported that students easily have misconceptions about planets in the solar system because it is hard to imagine the phenomena of outer space. Virtual reality (VR) technology has drawn much attention to virtualizing the scenes in space. However, it is important to help students learn systematically when they learn Astronomy courses in a VR learning environment. Therefore, in this study, a knowledge constructing tool-a concept map to be used as an instant feedback mechanism in a VR system in Astronomy courses-has been developed. Students learn the features and concepts in a VR environment and are guided by an expert concept map. When a student has a misconception, the system will guide him/her to observe the target planet and answer the question again. It is our aim that the proposed approach will enhance students\' learning achievement and learning motivation, and decrease their cognitive load. Moreover, the students\' learning behavior will be analyzed to understand the effectiveness of this learning approach.',
+        '10.1109/IIAI-AAI.2016.152'
+    );
+
+INSERT INTO
+    author (author_ID, author_first_name, author_last_name)
+VALUES
+    (3, 'Yi_Chiao', 'Hseih');
+
+INSERT INTO
+    editor (editor_ID, editor_first_name, editor_last_name)
+VALUES
+    (2, 'Hui-Chun', 'Chu');
+
+INSERT INTO
+    scientific_subject (subject_ID, subject)
+VALUES
+    (
+        2,
+        'Learning in Virtual Reality'
+    );
+
+INSERT INTO
+    conference_paper_proceedings_subject (
+        conference_paper_proceedings_subject_ID,
+        subject_ID,
+        conference_paper_proceedings_ID
+    )
+VALUES
+    (2, 2, 2);
+
+INSERT INTO
+    author_conference_paper_proceedings (
+        author_conference_paper_proceedings_ID,
+        author_ID,
+        conference_paper_proceedings_ID
+    )
+VALUES
+    (3, 1, 2),
+    (4, 3, 2);
+
+INSERT INTO
+    editor_conference_paper_proceedings (
+        editor_conference_paper_proceedings_ID,
+        editor_ID,
+        conference_paper_proceedings_ID
+    )
+VALUES
+    (2, 2, 2);
+
+INSERT INTO
+    `publisher` (
+        `publisher_ID`,
+        `publisher_name`,
+        `publisher_location`
+    )
+VALUES
+    (
+        '2',
+        'European Commission and the Belarus, Russian and Ukrainian Ministries on Chernobyl Affairs, Emergency Situations and Health',
+        'Minsk, Belarus'
+    );
+
+INSERT INTO
+    conference_paper_proceedings (
+        conference_paper_proceedings_ID,
+        conference_paper_title,
+        title_of_conference,
+        place_of_publication,
+        year_of_publication,
+        publisher_ID,
+        hyperlink,
+        abstract,
+        DOI
+    )
+VALUES
+    (
+        '3',
+        'Proceedings of the first international conference \'The radiological consequences of the Chernobyl accident\'',
+        ' International Conference on \'The Radiological Consequences of the Chernobyl Accident\'',
+        'Minsk, Belarus',
+        '1996',
+        '2',
+        'https://www.osti.gov/etdeweb/servlets/purl/20112710',
+        'Five main objectives were assigned to the EC/CIS scientific collaborative programme: improvement of the knowledge of the relationship between doses and radiation-induced health effects; updating of the arrangements for off-site emergency management response (shot- and medium term)in the even of a future nuclear accident; assisting the relevant CIS Ministries alleviate the consequences of the Chernobyl accident, in particular in the field of restoration of contaminated territories; elaboration of a scientific basis to definite the content of Community assistance programmes; updating of the local technical infrastructure, and implementation of a large programme of exchange of scientists between both Communities. The topics addressed during the Conference mainly reflect the content of the joint collaborative programme: environmental transfer and decontamination, risk assessment and management, health related issues including dosimetry. The main aims of the Conference are to present the major achievements of the joint EC/CIS collaborative research programme (1992-1995) of the consequences of the Chernobyl accident, and to promote an objective evaluation of them by the international scientific community. The Conference is taking place close to the 10{sup th} anniversary of the accident and we hope it will contribute to more objective communication of the health and environmental consequences of the Chernobyl accident, and how these may be mitigated in future. The Conference is expected to be an important milestone in the series of meetings which will take place internationally around the 10{sup th} anniversary of the nuclear accident. It also provides a major opportunity for all participants to become acquainted with software developed within the framework of the collaborative programme, namely: Geographical Information Systems displaying contamination levels and dose-commitments; Decision Support Systems for the management of contaminated territories; Decision Support Systems for off-site emergency management (RODOS), etc.',
+        'EDB-01:001440'
+    );
+
+INSERT INTO
+    `author` (
+        `author_ID`,
+        `author_first_name`,
+        `author_last_name`
+    )
+VALUES
+    ('4', 'A', 'Karaoglou'),
+    ('5', 'G', 'Desmet'),
+    ('6', 'G. N.', 'Kelly'),
+    ('7', 'H. G.', 'Menzel');
+
+INSERT INTO
+    `editor` (
+        `editor_ID`,
+        `editor_first_name`,
+        `editor_last_name`
+    )
+VALUES
+    ('3', ' E.P. ', 'Petriae'),
+    ('4', 'V. A.', 'Kutkov,');
+
+INSERT INTO
+    `scientific_subject` (`subject_ID`, `subject`)
+VALUES
+    ('3', 'Chernobyl'),
+    ('4', 'Radiation');
+
+INSERT INTO
+    `conference_paper_proceedings_subject` (
+        `conference_paper_proceedings_subject_ID`,
+        `subject_ID`,
+        `conference_paper_proceedings_ID`
+    )
+VALUES
+    ('3', '3', '3'),
+    ('4', '4', '3');
+
+INSERT INTO
+    `author_conference_paper_proceedings` (
+        `author_conference_paper_proceedings_ID`,
+        `author_ID`,
+        `conference_paper_proceedings_ID`
+    )
+VALUES
+    ('5', '4', '3'),
+    ('6', '5', '3'),
+    ('7', '6', '3'),
+    ('8', '7', '3');
+
+INSERT INTO
+    `editor_conference_paper_proceedings` (
+        `editor_conference_paper_proceedings_ID`,
+        `editor_ID`,
+        `conference_paper_proceedings_ID`
+    )
+VALUES
+    ('3', '4', '3'),
+    ('4', '3', '3');
+
+INSERT INTO
+    `publisher` (
+        `publisher_ID`,
+        `publisher_name`,
+        `publisher_location`
+    )
+VALUES
+    ('3', 'European Commission', 'Brussels, Belgium');
+
+INSERT INTO
+    `journal_article` (
+        `journal_ID`,
+        `journal_article_title`,
+        `journal_title`,
+        `year_of_publication`,
+        `volume_number`,
+        issue_number,
+        `page_numbers_of_article`,
+        `hyperlink`,
+        `abstract`,
+        `DOI`
+    )
+VALUES
+    (
+        '1',
+        'Health consequences of Chernobyl and other radiation accidents',
+        'Radiation and Environmental Biophysics',
+        '1998',
+        '37',
+        1,
+        '1-9',
+        'https://www.osti.gov/etdeweb/biblio/613483',
+        'The Radiation Protection Research Unit of the European Commission has been supporting collaborative research projects on the radiological consequences of the Chernobyl accident since 1991. However, in the Fourth Framework Programme of the Commission which started in 1996, the collaboration with scientists in the former Soviet Union has been placed on a different footing, and the programme has been expanded to include other regions, especially in Russia and Kazakhstan, where previous nuclear incidents have led to the exposure of workers and the local populations and to widespread radioactive contamination. There are 15 projects on health-related studies in the newly started programme, and in order to improve the collaboration between the different scientists working in these projects a Cluster Contractors` Meeting was organised in San Miniato, Italy, in June 1997 with the participation of some 50 scientists from the European Union (EU) and the Newly Independent States (NIS). This report summarizes the different topics, including molecular biology and treatment of childhood thyroid cancer, various epidemiological studies and dose reconstruction, which were discussed at the meeting and which form the major projects in the new collaborative programme. (orig.) 17 refs.',
+        '10.1007/s004110050085'
+    );
+
+INSERT INTO
+    `author` (
+        `author_ID`,
+        `author_first_name`,
+        `author_last_name`
+    )
+VALUES
+    ('8', 'K. H.', 'Chadwick');
+
+INSERT INTO
+    `author_journal_article` (
+        `author_journal_article_ID`,
+        `author_ID`,
+        `journal_article_ID`
+    )
+VALUES
+    ('1', '4', '1'),
+    ('2', '8', '1');
+
+INSERT INTO
+    `journal_article_subject` (
+        `journal_article_subject_ID`,
+        `subject_ID`,
+        `journal_ID`
+    )
+VALUES
+    ('1', '3', '1'),
+    ('2', '4', '1');
+
+INSERT INTO
+    `publisher` (
+        `publisher_ID`,
+        `publisher_name`,
+        `publisher_location`
+    )
+VALUES
+    (
+        '4',
+        'International Atomic Energy Agency ',
+        'Vienna, Austria'
+    );
+
+INSERT INTO
+    `journal_article` (
+        `journal_ID`,
+        `journal_article_title`,
+        `journal_title`,
+        `year_of_publication`,
+        `volume_number`,
+        issue_number,
+        `page_numbers_of_article`,
+        `hyperlink`,
+        `abstract`,
+        `DOI`
+    )
+VALUES
+    (
+        '2',
+        'Bone Cancer Risk\r\n',
+        'Journal of Radiological Protection',
+        '2001',
+        '21',
+        1,
+        '66-67',
+        'https://www.osti.gov/etdeweb/biblio/20147154',
+        'In view of the considerable disparity in published values of the risk for bone cancers from ionising radiation, the article \'An analysis of bone and head sinus cancers in radium dial painters using a two-mutation carcinogenesis model\' by Leenhouts and Brugmans in the June 2000 issue of this Journal deserves further comment and consideration. The letter concludes that radiological protection and risk estimation has acquired an extra dimension, and it is clear that the risk of bone cancer from exposure to ionising radiation needs further review. Letter-to-the-editor.\r\n',
+        'GB01$0561012916'
+    );
+
+INSERT INTO
+    `scientific_subject` (`subject_ID`, `subject`)
+VALUES
+    ('5', 'Bone Cancer Risk');
+
+INSERT INTO
+    `journal_article_subject` (
+        `journal_article_subject_ID`,
+        `subject_ID`,
+        `journal_ID`
+    )
+VALUES
+    ('3', '5', '2');
+
+INSERT INTO
+    `author_journal_article` (
+        `author_journal_article_ID`,
+        `author_ID`,
+        `journal_article_ID`
+    )
+VALUES
+    ('3', '8', '2');
+
+INSERT INTO
+    `publisher` (
+        `publisher_ID`,
+        `publisher_name`,
+        `publisher_location`
+    )
+VALUES
+    ('5', 'Routledge', 'Oxfordshire, England');
+
+INSERT INTO
+    `author` (
+        `author_ID`,
+        `author_first_name`,
+        `author_last_name`
+    )
+VALUES
+    ('9', 'Malcolm ', 'Coulthard'),
+    ('10', 'Alison', 'Johnson'),
+    ('11', 'David ', 'Wright');
+
+INSERT INTO
+    `book` (
+        `book_ID`,
+        `book_title`,
+        `series_title`,
+        `series_number`,
+        `edition`,
+        `place_of_publication`,
+        `year_of_publication`,
+        `publisher_ID`,
+        `hyperlink`,
+        `abstract`,
+        `DOI`,
+        `ISBN`
+    )
+VALUES
+    (
+        '1',
+        'An Introduction to Forensic Linguistics\r\n',
+        'Language in Evidence\r\n',
+        '1',
+        '1',
+        'London',
+        '2016',
+        '5',
+        'https://www.taylorfrancis.com/books/mono/10.4324/9781315630311/introduction-forensic-linguistics-malcolm-coulthard-alison-johnson-david-wright',
+        'An Introduction to Forensic Linguistics: Language in Evidence has established itself as the essential textbook written by leading authorities in this expanding field. The second edition of this bestselling textbook begins with a new introduction and continues in two parts.\r\n\r\nPart One deals with the language of the legal process, and begins with a substantial new chapter exploring key theoretical and methodological approaches. In four updated chapters it goes on to cover the language of the law, initial calls to the emergency services, police interviewing, and courtroom discourse. Part Two looks at language as evidence, with substantially revised and updated chapters on the following key topics:\r\n\r\nthe forensic linguist\r\nforensic phonetics\r\nauthorship attribution\r\nthe linguistic investigation of plagiarism\r\nthe linguist as expert witness.\r\nThe authors combine an array of perspectives on forensic linguistics, using knowledge and experience gained in legal settings – Coulthard in his work as an expert witness for cases such as the Birmingham Six and the Derek Bentley appeal, and Johnson as a former police officer. Research tasks, further reading, web links, and a new conclusion ensure that this remains the core textbook for courses in forensic linguistics and language and the law. A glossary of key terms is also available at https://www.routledge.com/products/9781138641716 and on the Routledge Language and Communication Portal.\r\n\r\n\r\n',
+        '10.4324/9781315630311',
+        '9781315630311'
+    );
+
+INSERT INTO
+    `author_book` (`author_book_ID`, `author_ID`, `book_ID`)
+VALUES
+    ('1', '10', '1'),
+    ('2', '11', '1'),
+    ('3', '9', '1');
+
+INSERT INTO
+    `editor` (
+        `editor_ID`,
+        `editor_first_name`,
+        `editor_last_name`
+    )
+VALUES
+    ('5', 'Taylor', 'Francis Group');
+
+INSERT INTO
+    `editor_book` (`editor_book_ID`, `editor_ID`, `book_ID`)
+VALUES
+    ('1', '5', '1');
+
+INSERT INTO
+    `scientific_subject` (`subject_ID`, `subject`)
+VALUES
+    ('6', 'Forensic Linguistics'),
+    ('7', 'Language Processing');
+
+INSERT INTO
+    `book_subject` (`book_subject_ID`, `subject_ID`, `book_ID`)
+VALUES
+    ('1', '6', '1'),
+    ('2', '7', '1');
+
+INSERT INTO
+    `journal_article` (
+        `journal_ID`,
+        `journal_article_title`,
+        `journal_title`,
+        `year_of_publication`,
+        `volume_number`,
+        `issue_number`,
+        `page_numbers_of_article`,
+        `hyperlink`,
+        `abstract`,
+        `DOI`
+    )
+VALUES
+    (
+        '3',
+        'Using word n-grams to identify authors and idiolects - A corpus approach to a forensic linguistic problem\r\n',
+        'International Journal of Corpus Linguistics',
+        '2017',
+        '22',
+        '2',
+        '212-241',
+        'https://www.jbe-platform.com/content/journals/10.1075/ijcl.22.2.03wri',
+        'Forensic authorship attribution is concerned with identifying the writers of anonymous criminal documents. Over the last twenty years, computer scientists have developed a wide range of statistical procedures using a number of different linguistic features to measure similarity between texts. However, much of this work is not of practical use to forensic linguists who need to explain in reports or in court why a particular method of identifying potential authors works. This paper sets out to address this problem using a corpus linguistic approach and the 176-author 2.5 million-word Enron Email Corpus. Drawing on literature positing the idiolectal nature of collocations, phrases and word sequences, this paper tests the accuracy of word n-grams in identifying the authors of anonymised email samples. Moving beyond the statistical analysis, the usage-based concept of entrenchment is offered as a means by which to account for the recurring and distinctive production of idiolectal word n-grams.\r\n\r\n',
+        '10.1075/ijcl.22.2.03wri'
+    );
+
+INSERT INTO
+    `author_journal_article` (
+        `author_journal_article_ID`,
+        `author_ID`,
+        `journal_article_ID`
+    )
+VALUES
+    ('4', '11', '3');
+
+INSERT INTO
+    `scientific_subject` (`subject_ID`, `subject`)
+VALUES
+    ('8', 'word n-grams');
+
+INSERT INTO
+    `journal_article_subject` (
+        `journal_article_subject_ID`,
+        `subject_ID`,
+        `journal_ID`
+    )
+VALUES
+    ('4', '8', '3'),
+    ('5', '6', '3');
+
+INSERT INTO
+    `publisher` (
+        `publisher_ID`,
+        `publisher_name`,
+        `publisher_location`
+    )
+VALUES
+    ('6', 'CRC Press', 'Florida, USA');
+
+INSERT INTO
+    `book` (
+        `book_ID`,
+        `book_title`,
+        `series_title`,
+        `series_number`,
+        `edition`,
+        `place_of_publication`,
+        `year_of_publication`,
+        `publisher_ID`,
+        `hyperlink`,
+        `abstract`,
+        `DOI`,
+        `ISBN`
+    )
+VALUES
+    (
+        '2',
+        'Forensic Linguistics',
+        'Advances in Forensic Stylistics',
+        '1',
+        '1',
+        'Florida, USA',
+        '2002',
+        '6',
+        'https://books.google.co.uk/books?hl=en&lr=&id=QA7OBQAAQBAJ&oi=fnd&pg=PP1&ots=LKZSnZ5dvl&sig=DNRQ7YpU3e0wg8_a7wWnbQmSr-o#v=onepage&q&f=false',
+        'The first questions I am presented with on direct examination are always to\r\ndescribe and explain what I do. This requires a series of brief and clear\r\nresponses defining the theory and the nested array of analytical tools used\r\nin cases of questioned authorship: language, linguistics, linguistic variation,\r\nforensic linguistics, style, stylistics, and forensic stylistics.\r\nConsequently, I have used these questions to define the aims and structure of this book: to provide an introduction to language, linguistics, and\r\nlinguistic variation for nonlinguists (e.g., attorneys) who need to understand\r\nwhat linguist-witnesses do; to introduce the discipline of forensic linguistics;\r\nand to situate forensic stylistics as a field of language study and forensic\r\nanalysis within the discipline of forensic linguistics. Chapters 1 through 6\r\nwill approximate this sequence.\r\nAlthough the linguistic study of language is well established, linguistics\r\nis something new for many jurors, judges, attorneys, and other forensic\r\nspecialists. In addition, many linguists must learn how to talk about what\r\nthey do in nontechnical terms, something accomplished to some degree here,\r\nI hope.',
+        '10.1201_9781420041170',
+        NULL
+    );
+
+INSERT INTO
+    `editor` (
+        `editor_ID`,
+        `editor_first_name`,
+        `editor_last_name`
+    )
+VALUES
+    ('6', 'Dongdoo', 'Choi');
+
+INSERT INTO
+    `editor_book` (`editor_book_ID`, `editor_ID`, `book_ID`)
+VALUES
+    ('2', '6', '2');
+
+INSERT INTO
+    `author` (
+        `author_ID`,
+        `author_first_name`,
+        `author_last_name`
+    )
+VALUES
+    ('12', 'Gerald R.', 'McMenamin');
+
+INSERT INTO
+    `author_book` (`author_book_ID`, `author_ID`, `book_ID`)
+VALUES
+    ('4', '12', '2');
+
+INSERT INTO
+    `scientific_subject` (`subject_ID`, `subject`)
+VALUES
+    ('9', 'Advances in Forensic Stylistics');
+
+INSERT INTO
+    `book_subject` (`book_subject_ID`, `subject_ID`, `book_ID`)
+VALUES
+    ('3', '6', '2'),
+    ('4', '9', '2');
+
+INSERT INTO
+    `publisher` (
+        `publisher_ID`,
+        `publisher_name`,
+        `publisher_location`
+    )
+VALUES
+    ('7', 'MIT Press', 'Massachusetts, USA');
+
+INSERT INTO
+    `book` (
+        `book_ID`,
+        `book_title`,
+        `series_title`,
+        `series_number`,
+        `edition`,
+        `place_of_publication`,
+        `year_of_publication`,
+        `publisher_ID`,
+        `hyperlink`,
+        `abstract`,
+        `DOI`,
+        `ISBN`
+    )
+VALUES
+    (
+        '3',
+        'Quantum Computing : A Gentle Introduction\r\n',
+        'Scientific and engineering computation\r\n',
+        '1',
+        '1',
+        'Cambridge, Mass., USA',
+        '2011',
+        '7',
+        'https://ebookcentral.proquest.com/lib/aston/detail.action?docID=3339229',
+        'A thorough exposition of quantum computing and the underlying concepts of quantum physics, with explanations of the relevant mathematics and numerous examples. The combination of two of the twentieth century\'s most influential and revolutionary scientific theories, information theory and quantum mechanics, gave rise to a radically new view of computing and information. Quantum information processing explores the implications of using quantum mechanics instead of classical mechanics to model information and its processing. Quantum computing is not about changing the physical substrate on which computation is done from classical to quantum but about changing the notion of computation itself, at the most basic level. The fundamental unit of computation is no longer the bit but the quantum bit or qubit. This comprehensive introduction to the field offers a thorough exposition of quantum computing and the underlying concepts of quantum physics, explaining all the relevant mathematics and offering numerous examples. With its careful development of concepts and thorough explanations, the book makes quantum computing accessible to students and professionals in mathematics, computer science, and engineering. A reader with no prior knowledge of quantum physics (but with sufficient knowledge of linear algebra) will be able to gain a fluent understanding by working through the book.\r\n\r\n',
+        '742513505',
+        '9780262295390'
+    );
+
+INSERT INTO
+    `author` (
+        `author_ID`,
+        `author_first_name`,
+        `author_last_name`
+    )
+VALUES
+    ('13', 'Eleanor', 'Rieffel');
+
+INSERT INTO
+    `editor` (
+        `editor_ID`,
+        `editor_first_name`,
+        `editor_last_name`
+    )
+VALUES
+    ('7', 'Wolfgang H.', 'Polak');
+
+INSERT INTO
+    `editor_book` (`editor_book_ID`, `editor_ID`, `book_ID`)
+VALUES
+    ('3', '7', '3');
+
+INSERT INTO
+    `author_book` (`author_book_ID`, `author_ID`, `book_ID`)
+VALUES
+    ('5', '13', '3');
+
+INSERT INTO
+    `scientific_subject` (`subject_ID`, `subject`)
+VALUES
+    ('10', 'Quantum Computing');
+
+INSERT INTO
+    `book_subject` (`book_subject_ID`, `subject_ID`, `book_ID`)
+VALUES
+    ('5', '10', '3');
+
+INSERT INTO
+    `thesis` (
+        `thesis_ID`,
+        `title`,
+        `thesis_type`,
+        academic_institution,
+        `year_of_publication`,
+        `hyperlink`,
+        `abstract`,
+        `DOI`
+    )
+VALUES
+    (
+        '1',
+        'Design and analysis of quantum algorithms for quantum computing and communications\r\n',
+        'PhD',
+        'University of Lancaster',
+        '2021',
+        'https://ethos.bl.uk/OrderDetails.do?uin=uk.bl.ethos.832456',
+        'The quantum communication, from a conceptual point of view, is a technology that uses the information transmission of quantum media to communicate. It mainly includes technologies such as quantum key distribution (QKD) and quantum teleportation. This thesis proposes a potential application of QKD in multi-user networks. In this thesis, it focuses on Carrier-sense Multiple Access (CSMA) protocol, and analyses the use of carrier-sense multiple access with collision avoidance (CSMA/CA) for QKD in the network. In addition, a multiple access QKD with channel detection protocol is also proposed. Quantum computing utilises the superposition and entanglement information of quantum states to operate and process, and its most significant advantage lies in the \"parallelism of operations\", that is, the quantum information of the superposition states is transformed once, which is equivalent to the simultaneous operation of the quantum information. Firstly, in this thesis, we propose a new quantum algorithm of calculating temporal difference to detect the moving objects in any videos. Our quantum algorithm has the complexity of calculating temporal difference in dynamic video object detection to be only O(1). Secondly, we propose a new method to encode classical input data into quantum states to represent a quantum neuron, which has a low-complexity form and can be easily utilised to construct a quantum neural network (QNN). QNN is a network which is to be composed of several quantum neurons. Thirdly, in this thesis, we re-formulate a quantum-classical hybrid model for QNN that proved to be effective, which is known as parameterised quantum circuit model, and explain it from the perspective of software design.\r\n',
+        '10.17635/lancaster/thesis/1343'
+    );
+
+INSERT INTO
+    `author` (
+        `author_ID`,
+        `author_first_name`,
+        `author_last_name`
+    )
+VALUES
+    ('14', 'Yao', 'Zhang');
+
+INSERT INTO
+    `author_thesis` (`author_thesis_ID`, `author_ID`, `thesis_ID`)
+VALUES
+    ('1', '14', '1');
+
+INSERT INTO
+    `scientific_subject` (`subject_ID`, `subject`)
+VALUES
+    ('11', 'Quantum Algorithms');
+
+INSERT INTO
+    `thesis_subject` (`thesis_subject_ID`, `subject_ID`, `thesis_ID`)
+VALUES
+    ('1', '11', '1'),
+    ('2', '10', '1');
+
+INSERT INTO
+    `thesis` (
+        `thesis_ID`,
+        `title`,
+        `thesis_type`,
+        academic_institution,
+        `year_of_publication`,
+        `hyperlink`,
+        `abstract`,
+        `DOI`
+    )
+VALUES
+    (
+        '2',
+        'Advancing machine learning in astrophysics\r\n',
+        'Ph.D.',
+        'University of Oxford',
+        '2021',
+        'https://ethos.bl.uk/OrderDetails.do?uin=uk.bl.ethos.840149',
+        'This thesis explores four projects applying supervised deep learning to help answer astrophysical questions. I first consider faint tidal features. Tidal features are a long-lasting signature of galaxy mergers, making them useful for measuring merger rates. However, current automated methods struggle to detect faint tidal features in complex galaxies. I use convolutional neural networks to identify galaxies with tidal features in the CFHTLS- Wide Survey, improving on previous methods applied to the same dataset. I show that my networks can identify which pixels are associated with tidal features, potentially enabling researchers to not only identify but also characterise tidal features. I then turn to Galaxy Zoo, a citizen science project measuring galaxy morphology. Galaxy Zoo is being gradually outpaced by the increasing scale of new surveys. Au- tomated classifiers can be trained using volunteer responses; however, such classifiers are often unable to consider uncertainty in either volunteer responses or predictions, leading to wasted volunteer effort and overconfident classifications. I introduce a probabilistic approach that allows classifiers to flexibly express uncertainty. I use this probabilistic approach to build a machine learning system that \'asks\' volunteers to label the galaxies it could best learn from. I relaunch Galaxy Zoo with images from the Dark Energy Camera Legacy Survey and run my system live, collecting 1.8 million volunteer responses. My final models are around 99% accurate on every question for galaxies with confident volunteer answers and are otherwise correctly uncertain. Next, I help the Canadian Hydrogen Intensity Mapping Experiment (CHIME) detect fast radio bursts. CHIME only attempts to detect FRB above a signal-to- noise threshold of σ = 8.5, in part for lack of expert time to review candidates. I created and launched a citizen science project to classify the 7.8 ≤ σ < 8.5 signal-to- noise candidates detected by CHIME each week. Candidates found by this project may be the most distant fast radio bursts ever detected, which I hope will serve as useful cosmological probes of the intergalactic medium. Finally, I show that neural network emulation can efficiently recover posteriors of galaxy parameters from photometry. Galaxy SED simulators are too slow to use MCMC inference on large samples. I train a neural network to emulate an SED simulator, providing both faster likelihood evaluations and known gradients. These gradients can then be used for efficient Hamiltonian Monte Carlo inference. Together, these projects show how deep learning can help astronomers make ef- fective use of limited and uncertain data.\r\n',
+        'uk.bl.ethos.840149'
+    );
+
+INSERT INTO
+    `author` (
+        `author_ID`,
+        `author_first_name`,
+        `author_last_name`
+    )
+VALUES
+    ('15', 'Christopher', 'Lintott');
+
+INSERT INTO
+    `author_thesis` (`author_thesis_ID`, `author_ID`, `thesis_ID`)
+VALUES
+    ('2', '15', '2');
+
+INSERT INTO
+    `scientific_subject` (`subject_ID`, `subject`)
+VALUES
+    ('12', 'Astrophysics'),
+    ('13', 'Machine Learning');
+
+INSERT INTO
+    `thesis_subject` (`thesis_subject_ID`, `subject_ID`, `thesis_ID`)
+VALUES
+    ('3', '12', '2'),
+    ('4', '13', '2');
+
+INSERT INTO
+    `thesis` (
+        `thesis_ID`,
+        `title`,
+        `thesis_type`,
+        academic_institution,
+        `year_of_publication`,
+        `hyperlink`,
+        `abstract`,
+        `DOI`
+    )
+VALUES
+    (
+        '3',
+        'Experimental studies for explosive nuclear astrophysics\r\n',
+        'Ph.D.',
+        'University of Edinburgh',
+        '2014',
+        'https://ethos.bl.uk/OrderDetails.do?uin=uk.bl.ethos.699933',
+        'In the ejecta from ONe novae outbursts nuclei up to A~40 are observed. The 30P(p,γ)31S reaction is thought to be the bottleneck for the production of all elements heavier than sulphur. However, due to uncertainties in the properties of key proton-unbound resonances the reaction rate is not well determined. In this thesis work, excited states in 31S were populated via the 28Si(4He,n) light-ion fusion-evaporation reaction and the prompt electromagnetic radiation was then detected with the GAMMASPHERE detector array. This γ-ray spectroscopy study, and comparisons with the stable mirror nucleus 31P, allowed the determination of the 31S level structure below the proton-emission threshold and also of the key proton-unbound states for the 30P(p,γ)31S reaction. In particular, transitions from key, low-spin states were observed for the first time. This new information was then used for the re-evaluation of the 30P(p,γ)31S reaction in the temperature range relevant for ONe novae. The newly calculated rate is higher than previous estimates implying a greater flux of material processed to high-Z elements in novae. Astrophysical X-ray bursts are thought to be a result of thermonuclear explosions on the atmosphere of an accreting neutron star. Between these bursts, energy is thought to be generated by the hot CNO cycles. The 15O(α,γ)19Ne reaction is one reaction that allows breakout from these CNO cycle and into the rp-process to fuel outbursts. The reaction is expected to be dominated by a single 3/2+ resonance at 4.033 MeV in 19Ne, however, limited information is available on this key state. This thesis work reports on a pioneering study of the 20Ne(p,d)19Ne reaction in inverse kinematics performed at the Experimental Storage Ring (ESR) as a means of accessing the 4.033-MeV state in 19Ne. The unique background free, high luminosity conditions of the ESR were utilised for this, the first transfer reaction performed at the ESR. The results of this pioneering test experiment are presented along with suggestions for future measurements at storage ring facilities.\r\n',
+        'uk.bl.ethos.699933 	'
+    );
+
+INSERT INTO
+    `author` (
+        `author_ID`,
+        `author_first_name`,
+        `author_last_name`
+    )
+VALUES
+    ('16', 'Daniel Thomas', 'Doherty');
+
+INSERT INTO
+    `author_thesis` (`author_thesis_ID`, `author_ID`, `thesis_ID`)
+VALUES
+    ('3', '16', '3');
+
+INSERT INTO
+    `scientific_subject` (`subject_ID`, `subject`)
+VALUES
+    ('14', 'Explosive Nuclear Astrophysics');
+
+INSERT INTO
+    `thesis_subject` (`thesis_subject_ID`, `subject_ID`, `thesis_ID`)
+VALUES
+    ('5', '12', '3'),
+    ('6', '14', '3');
+
+INSERT INTO
+    `user` (
+        `user_ID`,
+        `user_name`,
+        `isauthor`,
+        `isreader`,
+        `user_first_name`,
+        `user_last_name`,
+        `phone_number`,
+        `email_address`,
+        `contact_preference`
+    )
+VALUES
+    (
+        '1',
+        'arbbas',
+        '0',
+        '1',
+        'Adam',
+        'Bassett',
+        '07716898123',
+        'adam@google.com',
+        'Email'
+    );
+
+INSERT INTO
+    `user` (
+        `user_ID`,
+        `user_name`,
+        `isauthor`,
+        `isreader`,
+        `user_first_name`,
+        `user_last_name`,
+        `phone_number`,
+        `email_address`,
+        `contact_preference`
+    )
+VALUES
+    (
+        '2',
+        'dav_wright',
+        '1',
+        '1',
+        'Dave',
+        'Wright',
+        '07316898157',
+        'davidwright123@live.com',
+        'Phone'
+    );
+
+INSERT INTO
+    `user` (
+        `user_ID`,
+        `user_name`,
+        `isauthor`,
+        `isreader`,
+        `user_first_name`,
+        `user_last_name`,
+        `phone_number`,
+        `email_address`,
+        `contact_preference`
+    )
+VALUES
+    (
+        '3',
+        'kev_chad1',
+        '1',
+        '0',
+        'Kevin',
+        'Chadwick',
+        '01233879809',
+        'chadwick3@uob.ac.uk',
+        'Email'
+    );
+
+INSERT INTO
+    `user_subject_interests` (
+        `user_subject_interests_ID`,
+        `user_ID`,
+        `subject_ID`
+    )
+VALUES
+    ('1', '1', '10'),
+    ('2', '1', '11'),
+    ('3', '1', '13'),
+    ('4', '1', '12'),
+    ('5', '3', '4'),
+    ('6', '3', '5'),
+    ('7', '3', '3'),
+    ('8', '3', '14'),
+    ('9', '3', '2'),
+    ('10', '2', '9'),
+    ('11', '2', '7'),
+    ('12', '2', '8'),
+    ('13', '2', '6'),
+    ('14', '2', '13');
+
+INSERT INTO
+    `user_library` (
+        `library_ID`,
+        `user_ID`,
+        `last_access`,
+        `conference_paper_proceedings_ID`,
+        `book_ID`,
+        `journal_ID`,
+        `thesis_ID`
+    )
+VALUES
+    (
+        '1',
+        '1',
+        '2022-03-15 13:23:49',
+        NULL,
+        '3',
+        NULL,
+        NULL
+    ),
+    (
+        '2',
+        '1',
+        '2022-03-08 10:35:32',
+        NULL,
+        NULL,
+        NULL,
+        '1'
+    ),
+    (
+        '3',
+        '1',
+        '2022-03-14 08:25:23',
+        NULL,
+        NULL,
+        '3',
+        NULL
+    ),
+    (
+        '4',
+        '1',
+        '2022-03-28 13:37:35',
+        NULL,
+        NULL,
+        NULL,
+        '3'
+    ),
+    (
+        '5',
+        '3',
+        '2022-03-09 09:37:35',
+        NULL,
+        NULL,
+        NULL,
+        '2'
+    ),
+    (
+        '6',
+        '3',
+        '2022-03-29 06:22:35',
+        '3',
+        NULL,
+        NULL,
+        NULL
+    ),
+    (
+        '7',
+        '3',
+        '2022-03-30 16:34:35',
+        NULL,
+        NULL,
+        '2',
+        NULL
+    ),
+    (
+        '8',
+        '3',
+        '2022-03-30 16:37:35',
+        NULL,
+        NULL,
+        '1',
+        NULL
+    ),
+    (
+        '9',
+        '3',
+        '2022-03-28 12:28:29',
+        NULL,
+        NULL,
+        NULL,
+        '3'
+    ),
+    (
+        '10',
+        '2',
+        '2022-03-17 12:37:35',
+        '1',
+        NULL,
+        NULL,
+        NULL
+    ),
+    (
+        '11',
+        '2',
+        '2022-03-03 11:30:35',
+        NULL,
+        '1',
+        NULL,
+        NULL
+    ),
+    (
+        '12',
+        '2',
+        '2022-03-05 13:37:35',
+        NULL,
+        '2',
+        NULL,
+        NULL
+    ),
+    (
+        '13',
+        '2',
+        '2022-03-30 05:49:35',
+        NULL,
+        NULL,
+        '3',
+        NULL
+    ),
+    (
+        '14',
+        '2',
+        '2022-03-21 11:37:35',
+        NULL,
+        NULL,
+        NULL,
+        '2'
+    ),
+    (
+        '15',
+        '2',
+        '2022-02-17 14:37:35',
+        '2',
+        NULL,
+        NULL,
+        NULL
+    );
+
+INSERT INTO
+    `publication_review` (
+        `pub_rev_ID`,
+        `user_ID`,
+        `review_score`,
+        `short_review`,
+        `conference_paper_proceedings_ID`,
+        `publication_type`,
+        `book_ID`,
+        `journal_ID`,
+        `thesis_ID`
+    )
+VALUES
+    (
+        '1',
+        '1',
+        '7',
+        'Good.',
+        NULL,
+        'book',
+        '3',
+        NULL,
+        NULL
+    ),
+    (
+        '2',
+        '1',
+        '10',
+        'Best read of my life',
+        NULL,
+        'thesis',
+        NULL,
+        NULL,
+        '1'
+    ),
+    (
+        '3',
+        '1',
+        '4',
+        'Not great',
+        NULL,
+        'journal',
+        NULL,
+        '3',
+        NULL
+    ),
+    (
+        '4',
+        '1',
+        '9',
+        'Amazing! So great.',
+        NULL,
+        'thesis',
+        NULL,
+        NULL,
+        '3'
+    ),
+    (
+        '5',
+        '3',
+        '9',
+        'Great stuff!',
+        NULL,
+        'thesis',
+        NULL,
+        NULL,
+        '2'
+    ),
+    (
+        '6',
+        '3',
+        '10',
+        'Top proceedings, can\'t get enough!',
+        '3',
+        'conf',
+        NULL,
+        NULL,
+        NULL
+    ),
+    (
+        '7',
+        '3',
+        '9',
+        'Cool',
+        NULL,
+        'journal',
+        NULL,
+        '2',
+        NULL
+    ),
+    (
+        '8',
+        '3',
+        '8',
+        'Pretty good so have given a fair score.',
+        NULL,
+        'journal',
+        NULL,
+        '1',
+        NULL
+    ),
+    (
+        '9',
+        '3',
+        '2',
+        'Not good',
+        NULL,
+        'thesis',
+        NULL,
+        NULL,
+        '3'
+    ),
+    (
+        '10',
+        '2',
+        '1',
+        'Hated it!',
+        '1',
+        'conf',
+        NULL,
+        NULL,
+        NULL
+    ),
+    (
+        '11',
+        '2',
+        '7',
+        'Okay',
+        NULL,
+        'book',
+        '1',
+        NULL,
+        NULL
+    ),
+    (
+        '12',
+        '2',
+        '6',
+        'Hmmm it was average',
+        NULL,
+        'book',
+        '2',
+        NULL,
+        NULL
+    ),
+    (
+        '13',
+        '2',
+        '10',
+        'Absolutely fantastic.',
+        NULL,
+        'journal',
+        NULL,
+        '3',
+        NULL
+    ),
+    (
+        '14',
+        '2',
+        '9',
+        'Amazing read and so detailed.',
+        NULL,
+        'thesis',
+        NULL,
+        NULL,
+        '2'
+    ),
+    (
+        '15',
+        '2',
+        '3',
+        'Not good at all. What a joke of a conference!',
+        '2',
+        'conf',
+        NULL,
+        NULL,
+        NULL
+    );
+
+INSERT INTO
+    `author_review` (
+        `author_rev_ID`,
+        `user_ID`,
+        `author_ID`,
+        `review_score`
+    )
+VALUES
+    ('1', '1', '13', '7'),
+    ('2', '1', '14', '10'),
+    ('3', '1', '8', '6'),
+    ('4', '1', '16', '8'),
+    ('5', '3', '15', '9'),
+    ('6', '3', '1', '2'),
+    ('7', '3', '8', '10'),
+    ('8', '2', '2', '5');
