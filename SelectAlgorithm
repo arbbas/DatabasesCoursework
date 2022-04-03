@@ -1,1 +1,37 @@
-
+SELECT
+    DISTINCT(b.book_ID),
+    b.book_title,
+    b.series_title,
+    a.author_first_name,
+    a.author_last_name,
+    b.series_number,
+    b.edition,
+    b.place_of_publication,
+    e.editor_first_name,
+    e.editor_last_name,
+    p.publisher_name,
+    b.year_of_publication,
+    b.hyperlink,
+    b.abstract,
+    b.DOI,
+    b.ISBN
+FROM
+    book AS b
+    INNER JOIN publisher AS p ON b.publisher_ID = p.publisher_ID
+    INNER JOIN editor_book AS eb ON eb.book_ID = b.book_ID
+    INNER JOIN editor AS e ON e.editor_ID = eb.editor_ID
+    INNER JOIN author_book AS ab ON ab.book_ID = b.book_ID
+    INNER JOIN author AS a ON a.author_ID = ab.author_ID
+    INNER JOIN publication_review AS pr ON pr.book_ID = b.book_ID
+    INNER JOIN user as u
+    INNER JOIN book_subject as bs on bs.book_ID = b.book_ID
+    INNER JOIN user_subject_interests AS usi ON usi.user_ID = u.user_ID
+WHERE
+    pr.review_score > (
+        SELECT
+            AVG(pr.review_score) * 0.04
+        FROM
+            publication_review
+    )
+    and usi.subject_ID = bs.subject_ID
+    and u.user_ID = 1
