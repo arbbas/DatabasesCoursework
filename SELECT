@@ -199,3 +199,39 @@ from
 where
     author_ID = 11
     and subject_ID = 6
+    /*      Task 5 (DIY): 
+     
+     
+     PT3: Count those with at least one matching subject to the item we want to recommend. 
+     Multiply the two numbers by w5 and w6 respectively, and add them to the previous result. */
+    /*PT1: Find all items the user has already read (are listed in the user’s library).*/
+    CREATE VIEW user_3_lib AS
+SELECT
+    *
+FROM
+    user_library
+WHERE
+    user_ID = 3;
+
+/*PT2: From that list, count the number of items that share at least one author with the item we want to recommend.*/
+set
+    @recommended_author = 13;
+
+with user_lib as (
+    SELECT
+        *
+    FROM
+        user_library
+    WHERE
+        user_ID = 1
+)
+select
+    ul.library_ID,
+    ul.book_ID,
+    ab.author_ID,
+    ul.user_ID
+from
+    user_lib as ul
+    inner join author_book as ab on ul.book_ID = ab.book_ID
+where
+    ab.author_ID = @recommended_author;
