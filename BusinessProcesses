@@ -1,0 +1,726 @@
+/*B1*/
+--Summary
+/* Here we can see that a new user with the ID of 4 has been added to the database. As spoken about in the report, they have ommitted
+ their contact preference when signing up so the system has gone to the default. The user has a isreader value of 1 meaning that they
+ are a reader. However, their isauthor value is 0 meaning it is false and they are not an author within the system*/
+--Summary
+INSERT INTO
+    `user` (
+        `user_ID`,
+        `user_name`,
+        `isauthor`,
+        `isreader`,
+        `user_first_name`,
+        `user_last_name`,
+        `phone_number`,
+        `email_address`,
+        `contact_preference`
+    )
+VALUES
+    (
+        '4',
+        'SebbyKe1',
+        '0',
+        '1',
+        'Sebastian',
+        'Kerfeld',
+        '07564437823',
+        'seb@google.com',
+        DEFAULT
+    );
+
+/*b2*/
+/*b3*/
+--Summary
+/* Here we can see that user 4 who is user_name SebbyKe1 has entered that they have read book_ID 3 and that they have it a score of 5.
+ There is a written review section in case users would like to give more context as to why they left the reivew that they did.*/
+--Summary
+INSERT INTO
+    `publication_review` (
+        `pub_rev_ID`,
+        `user_ID`,
+        `review_score`,
+        `short_review`,
+        `conference_paper_proceedings_ID`,
+        `publication_type`,
+        `book_ID`,
+        `journal_ID`,
+        `thesis_ID`
+    )
+VALUES
+    (
+        '20',
+        '4',
+        '5',
+        'Pretty average to be honest.',
+        NULL,
+        'book',
+        '3',
+        NULL,
+        NULL
+    )
+    /*B4*/
+    --Summary
+    /* */
+    --Summary
+    /*B5*/
+    --Summary
+    /*Here, user 4 has let the system know their scientific interests which mean that it can use this in the recommendation algorithm */
+    --Summary
+INSERT INTO
+    `user_subject_interests` (
+        `user_subject_interests_ID`,
+        `user_ID`,
+        `subject_ID`
+    )
+VALUES
+    ('20', '4', '10'),
+    ('21', '4', '11'),
+    ('22', '4', '13'),
+    ('23', '4', '12'),
+    /*B6*/
+    --Summary
+    /* This INSERT query demonstrates the user David Wright who is author ID 11 and user ID 2 inserting his paper about Bone Cancer Risk into the database */
+    --Summary
+INSERT INTO
+    `journal_article` (
+        `journal_ID`,
+        `journal_article_title`,
+        `journal_title`,
+        `year_of_publication`,
+        `volume_number`,
+        issue_number,
+        `page_numbers_of_article`,
+        `hyperlink`,
+        `abstract`,
+        `DOI`
+    )
+VALUES
+    (
+        '2',
+        'Bone Cancer Risk\r\n',
+        'Journal of Radiological Protection',
+        '2001',
+        '21',
+        1,
+        '66-67',
+        'https://www.osti.gov/etdeweb/biblio/20147154',
+        'In view of the considerable disparity in published values of the risk for bone cancers from ionising radiation, the article \'An analysis of bone and head sinus cancers in radium dial painters using a two-mutation carcinogenesis model\' by Leenhouts and Brugmans in the June 2000 issue of this Journal deserves further comment and consideration. The letter concludes that radiological protection and risk estimation has acquired an extra dimension, and it is clear that the risk of bone cancer from exposure to ionising radiation needs further review. Letter-to-the-editor.\r\n',
+        '10.$0561012916'
+    );
+
+INSERT INTO
+    `scientific_subject` (`subject_ID`, `subject`)
+VALUES
+    ('5', 'Bone Cancer Risk');
+
+INSERT INTO
+    `journal_article_subject` (
+        `journal_article_subject_ID`,
+        `subject_ID`,
+        `journal_ID`
+    )
+VALUES
+    ('3', '5', '2');
+
+INSERT INTO
+    `author_journal_article` (
+        `author_journal_article_ID`,
+        `author_ID`,
+        `journal_article_ID`
+    )
+VALUES
+    ('3', '8', '2');
+
+INSERT INTO
+    `publisher` (
+        `publisher_ID`,
+        `publisher_name`,
+        `publisher_location`
+    )
+VALUES
+    ('5', 'Routledge', 'Oxfordshire, England');
+
+INSERT INTO
+    `author` (
+        `author_ID`,
+        `author_first_name`,
+        `author_last_name`
+    )
+VALUES
+    ('9', 'Malcolm ', 'Coulthard'),
+    ('10', 'Alison', 'Johnson'),
+    ('11', 'David ', 'Wright');
+
+/*B7*/
+--Summary
+/* When user 4 reviewed book_ID 3 in business process 3, it would imply that the publication was now in their library as they have read it. Therefore we must supply the database with the query to do this. 
+ Note the DATETIME data type which helps administrators keep track of the users activity */
+--Summary
+INSERT INTO
+    `user_library` (
+        `library_ID`,
+        `user_ID`,
+        `last_access`,
+        `conference_paper_proceedings_ID`,
+        `book_ID`,
+        `journal_ID`,
+        `thesis_ID`
+    )
+VALUES
+    (
+        '20',
+        '4',
+        '2022-03-15 13:23:49',
+        NULL,
+        '3',
+        NULL,
+        NULL
+    )
+    /*B8*/
+    --Summary
+    /* User 4 may want to check that the publication that they have read have gone into the database. This query will return all of the books that they have read as books are the only publication type 
+     currently in their library. */
+    --Summary
+SELECT
+    *
+FROM
+    user_library AS ul
+    INNER JOIN book AS b ON b.book_ID = ul.book_ID
+WHERE
+    user_ID = 4;
+
+/*B9*/
+--Summary
+/*This query would allow the administrator to see the total users that have accounts in the database at the current time*/
+--Summary
+SELECT
+    COUNT(user_ID) AS total_users
+FROM
+    user
+    /*B10*/
+    --Summary
+    /*In this instance the administrator is looking at the role status of user_ID 2. The returned results are 1 for isauthor and 1 for isreader which tells the admin that the user is a reader and 
+     author type in the system */
+    --Summary
+SELECT
+    isauthor,
+    isreader
+FROM
+    user
+WHERE
+    user_ID = 2
+    /*B11*/
+    --Summary
+    /*This INSERT query shows how the user information is inserted into the table. The required information is stored as per the brief*/
+    --Summary
+INSERT INTO
+    `user` (
+        `user_ID`,
+        `user_name`,
+        `isauthor`,
+        author_ID,
+        `isreader`,
+        `user_first_name`,
+        `user_last_name`,
+        `phone_number`,
+        `email_address`,
+        `contact_preference`
+    )
+VALUES
+    (
+        '2',
+        'dav_wright',
+        '1',
+        '11',
+        '1',
+        'Dave',
+        'Wright',
+        '07316898157',
+        'davidwright123@live.com',
+        'Phone'
+    );
+
+/*B12*/
+--Summary
+/*Here we can see that the administrator can delete this user. There is a foreign key constraint that prevents this. I have not added a cascade on delete to the tables as a user leaving may
+ want to keep their reviews stored in the system so the admin would have to make them inactive instead */
+--Summary
+DELETE FROM
+    user
+WHERE
+    user_ID = 4
+    /*B13*/
+    --Summary
+    /*This query returns all of the necessary data required for a book for example. It also inclues the hyperlink, DOI and ISBN which will make the users experience easier when trying to locate
+     the book online */
+    --Summary
+SELECT
+    DISTINCT(b.book_ID),
+    b.book_title,
+    b.series_title,
+    a.author_first_name,
+    a.author_last_name,
+    b.series_number,
+    b.edition,
+    b.place_of_publication,
+    e.editor_first_name,
+    e.editor_last_name,
+    p.publisher_name,
+    b.year_of_publication,
+    b.hyperlink,
+    b.abstract,
+    b.DOI,
+    b.ISBN
+FROM
+    book AS b
+    INNER JOIN publisher AS p ON b.publisher_ID = p.publisher_ID
+    INNER JOIN editor_book AS eb ON eb.book_ID = b.book_ID
+    INNER JOIN editor AS e ON e.editor_ID = eb.editor_ID
+    INNER JOIN author_book AS ab ON ab.book_ID = b.book_ID
+    INNER JOIN author AS a ON a.author_ID = ab.author_ID
+WHERE
+    b.book_ID = 2
+    /*B14*/
+    --Summary
+    /*These four insert queries show that 4 different publication types can be stored in the databases along with the corresponding data required in the other tables such as authors, editors, publishers etc */
+    --Summary
+INSERT INTO
+    `book` (
+        `book_ID`,
+        `book_title`,
+        `series_title`,
+        `series_number`,
+        `edition`,
+        `place_of_publication`,
+        `year_of_publication`,
+        `publisher_ID`,
+        `hyperlink`,
+        `abstract`,
+        `DOI`,
+        `ISBN`
+    )
+VALUES
+    (
+        '1',
+        'An Introduction to Forensic Linguistics\r\n',
+        'Language in Evidence\r\n',
+        '1',
+        '1',
+        'London',
+        '2016',
+        '5',
+        'https://www.taylorfrancis.com/books/mono/10.4324/9781315630311/introduction-forensic-linguistics-malcolm-coulthard-alison-johnson-david-wright',
+        'An Introduction to Forensic Linguistics: Language in Evidence has established itself as the essential textbook written by leading authorities in this expanding field. The second edition of this bestselling textbook begins with a new introduction and continues in two parts.\r\n\r\nPart One deals with the language of the legal process, and begins with a substantial new chapter exploring key theoretical and methodological approaches. In four updated chapters it goes on to cover the language of the law, initial calls to the emergency services, police interviewing, and courtroom discourse. Part Two looks at language as evidence, with substantially revised and updated chapters on the following key topics:\r\n\r\nthe forensic linguist\r\nforensic phonetics\r\nauthorship attribution\r\nthe linguistic investigation of plagiarism\r\nthe linguist as expert witness.\r\nThe authors combine an array of perspectives on forensic linguistics, using knowledge and experience gained in legal settings – Coulthard in his work as an expert witness for cases such as the Birmingham Six and the Derek Bentley appeal, and Johnson as a former police officer. Research tasks, further reading, web links, and a new conclusion ensure that this remains the core textbook for courses in forensic linguistics and language and the law. A glossary of key terms is also available at https://www.routledge.com/products/9781138641716 and on the Routledge Language and Communication Portal.\r\n\r\n\r\n',
+        '10.4324/9781315630311',
+        '9781315630311'
+    );
+
+INSERT INTO
+    `author_book` (`author_book_ID`, `author_ID`, `book_ID`)
+VALUES
+    ('1', '10', '1'),
+    ('2', '11', '1'),
+    ('3', '9', '1');
+
+INSERT INTO
+    `editor` (
+        `editor_ID`,
+        `editor_first_name`,
+        `editor_last_name`
+    )
+VALUES
+    ('5', 'Taylor', 'Francis Group');
+
+INSERT INTO
+    `editor_book` (`editor_book_ID`, `editor_ID`, `book_ID`)
+VALUES
+    ('1', '5', '1');
+
+INSERT INTO
+    `scientific_subject` (`subject_ID`, `subject`)
+VALUES
+    ('6', 'Forensic Linguistics'),
+    ('7', 'Language Processing');
+
+INSERT INTO
+    `book_subject` (`book_subject_ID`, `subject_ID`, `book_ID`)
+VALUES
+    ('1', '6', '1'),
+    ('2', '7', '1');
+
+INSERT INTO
+    conference_paper_proceedings (
+        conference_paper_proceedings_ID,
+        conference_paper_title,
+        title_of_conference,
+        place_of_publication,
+        year_of_publication,
+        publisher_ID,
+        hyperlink,
+        abstract,
+        DOI
+    )
+VALUES
+    (
+        '3',
+        'Proceedings of the first international conference \'The radiological consequences of the Chernobyl accident\'',
+        ' International Conference on \'The Radiological Consequences of the Chernobyl Accident\'',
+        'Minsk, Belarus',
+        '1996',
+        '2',
+        'https://www.osti.gov/etdeweb/servlets/purl/20112710',
+        'Five main objectives were assigned to the EC/CIS scientific collaborative programme: improvement of the knowledge of the relationship between doses and radiation-induced health effects; updating of the arrangements for off-site emergency management response (shot- and medium term)in the even of a future nuclear accident; assisting the relevant CIS Ministries alleviate the consequences of the Chernobyl accident, in particular in the field of restoration of contaminated territories; elaboration of a scientific basis to definite the content of Community assistance programmes; updating of the local technical infrastructure, and implementation of a large programme of exchange of scientists between both Communities. The topics addressed during the Conference mainly reflect the content of the joint collaborative programme: environmental transfer and decontamination, risk assessment and management, health related issues including dosimetry. The main aims of the Conference are to present the major achievements of the joint EC/CIS collaborative research programme (1992-1995) of the consequences of the Chernobyl accident, and to promote an objective evaluation of them by the international scientific community. The Conference is taking place close to the 10{sup th} anniversary of the accident and we hope it will contribute to more objective communication of the health and environmental consequences of the Chernobyl accident, and how these may be mitigated in future. The Conference is expected to be an important milestone in the series of meetings which will take place internationally around the 10{sup th} anniversary of the nuclear accident. It also provides a major opportunity for all participants to become acquainted with software developed within the framework of the collaborative programme, namely: Geographical Information Systems displaying contamination levels and dose-commitments; Decision Support Systems for the management of contaminated territories; Decision Support Systems for off-site emergency management (RODOS), etc.',
+        '10.EDB-01:001440'
+    );
+
+INSERT INTO
+    `author` (
+        `author_ID`,
+        `author_first_name`,
+        `author_last_name`
+    )
+VALUES
+    ('4', 'A', 'Karaoglou'),
+    ('5', 'G', 'Desmet'),
+    ('6', 'G. N.', 'Kelly'),
+    ('7', 'H. G.', 'Menzel');
+
+INSERT INTO
+    `editor` (
+        `editor_ID`,
+        `editor_first_name`,
+        `editor_last_name`
+    )
+VALUES
+    ('3', ' E.P. ', 'Petriae'),
+    ('4', 'V. A.', 'Kutkov,');
+
+INSERT INTO
+    `scientific_subject` (`subject_ID`, `subject`)
+VALUES
+    ('3', 'Chernobyl'),
+    ('4', 'Radiation');
+
+INSERT INTO
+    `conference_paper_proceedings_subject` (
+        `conference_paper_proceedings_subject_ID`,
+        `subject_ID`,
+        `conference_paper_proceedings_ID`
+    )
+VALUES
+    ('3', '3', '3'),
+    ('4', '4', '3');
+
+INSERT INTO
+    `author_conference_paper_proceedings` (
+        `author_conference_paper_proceedings_ID`,
+        `author_ID`,
+        `conference_paper_proceedings_ID`
+    )
+VALUES
+    ('5', '4', '3'),
+    ('6', '5', '3'),
+    ('7', '6', '3'),
+    ('8', '7', '3');
+
+INSERT INTO
+    `editor_conference_paper_proceedings` (
+        `editor_conference_paper_proceedings_ID`,
+        `editor_ID`,
+        `conference_paper_proceedings_ID`
+    )
+VALUES
+    ('3', '4', '3'),
+    ('4', '3', '3');
+
+INSERT INTO
+    `journal_article` (
+        `journal_ID`,
+        `journal_article_title`,
+        `journal_title`,
+        `year_of_publication`,
+        `volume_number`,
+        issue_number,
+        `page_numbers_of_article`,
+        `hyperlink`,
+        `abstract`,
+        `DOI`
+    )
+VALUES
+    (
+        '1',
+        'Health consequences of Chernobyl and other radiation accidents',
+        'Radiation and Environmental Biophysics',
+        '1998',
+        '37',
+        1,
+        '1-9',
+        'https://www.osti.gov/etdeweb/biblio/613483',
+        'The Radiation Protection Research Unit of the European Commission has been supporting collaborative research projects on the radiological consequences of the Chernobyl accident since 1991. However, in the Fourth Framework Programme of the Commission which started in 1996, the collaboration with scientists in the former Soviet Union has been placed on a different footing, and the programme has been expanded to include other regions, especially in Russia and Kazakhstan, where previous nuclear incidents have led to the exposure of workers and the local populations and to widespread radioactive contamination. There are 15 projects on health-related studies in the newly started programme, and in order to improve the collaboration between the different scientists working in these projects a Cluster Contractors` Meeting was organised in San Miniato, Italy, in June 1997 with the participation of some 50 scientists from the European Union (EU) and the Newly Independent States (NIS). This report summarizes the different topics, including molecular biology and treatment of childhood thyroid cancer, various epidemiological studies and dose reconstruction, which were discussed at the meeting and which form the major projects in the new collaborative programme. (orig.) 17 refs.',
+        '10.1007/s004110050085'
+    );
+
+INSERT INTO
+    `author` (
+        `author_ID`,
+        `author_first_name`,
+        `author_last_name`
+    )
+VALUES
+    ('8', 'K. H.', 'Chadwick');
+
+INSERT INTO
+    `author_journal_article` (
+        `author_journal_article_ID`,
+        `author_ID`,
+        `journal_article_ID`
+    )
+VALUES
+    ('1', '4', '1'),
+    ('2', '8', '1');
+
+INSERT INTO
+    `journal_article_subject` (
+        `journal_article_subject_ID`,
+        `subject_ID`,
+        `journal_ID`
+    )
+VALUES
+    ('1', '3', '1'),
+    ('2', '4', '1');
+
+INSERT INTO
+    `thesis` (
+        `thesis_ID`,
+        `title`,
+        `thesis_type`,
+        academic_institution,
+        `year_of_publication`,
+        `hyperlink`,
+        `abstract`,
+        `DOI`
+    )
+VALUES
+    (
+        '3',
+        'Experimental studies for explosive nuclear astrophysics\r\n',
+        'Ph.D.',
+        'University of Edinburgh',
+        '2014',
+        'https://ethos.bl.uk/OrderDetails.do?uin=uk.bl.ethos.699933',
+        'In the ejecta from ONe novae outbursts nuclei up to A~40 are observed. The 30P(p,γ)31S reaction is thought to be the bottleneck for the production of all elements heavier than sulphur. However, due to uncertainties in the properties of key proton-unbound resonances the reaction rate is not well determined. In this thesis work, excited states in 31S were populated via the 28Si(4He,n) light-ion fusion-evaporation reaction and the prompt electromagnetic radiation was then detected with the GAMMASPHERE detector array. This γ-ray spectroscopy study, and comparisons with the stable mirror nucleus 31P, allowed the determination of the 31S level structure below the proton-emission threshold and also of the key proton-unbound states for the 30P(p,γ)31S reaction. In particular, transitions from key, low-spin states were observed for the first time. This new information was then used for the re-evaluation of the 30P(p,γ)31S reaction in the temperature range relevant for ONe novae. The newly calculated rate is higher than previous estimates implying a greater flux of material processed to high-Z elements in novae. Astrophysical X-ray bursts are thought to be a result of thermonuclear explosions on the atmosphere of an accreting neutron star. Between these bursts, energy is thought to be generated by the hot CNO cycles. The 15O(α,γ)19Ne reaction is one reaction that allows breakout from these CNO cycle and into the rp-process to fuel outbursts. The reaction is expected to be dominated by a single 3/2+ resonance at 4.033 MeV in 19Ne, however, limited information is available on this key state. This thesis work reports on a pioneering study of the 20Ne(p,d)19Ne reaction in inverse kinematics performed at the Experimental Storage Ring (ESR) as a means of accessing the 4.033-MeV state in 19Ne. The unique background free, high luminosity conditions of the ESR were utilised for this, the first transfer reaction performed at the ESR. The results of this pioneering test experiment are presented along with suggestions for future measurements at storage ring facilities.\r\n',
+        '10.uk.bl.ethos.699933 	'
+    );
+
+INSERT INTO
+    `author` (
+        `author_ID`,
+        `author_first_name`,
+        `author_last_name`
+    )
+VALUES
+    ('16', 'Daniel Thomas', 'Doherty');
+
+INSERT INTO
+    `author_thesis` (`author_thesis_ID`, `author_ID`, `thesis_ID`)
+VALUES
+    ('3', '16', '3');
+
+INSERT INTO
+    `scientific_subject` (`subject_ID`, `subject`)
+VALUES
+    ('14', 'Explosive Nuclear Astrophysics');
+
+INSERT INTO
+    `thesis_subject` (`thesis_subject_ID`, `subject_ID`, `thesis_ID`)
+VALUES
+    ('5', '12', '3'),
+    ('6', '14', '3');
+
+/*B15*/
+--Summary
+/*This section of the algorithm provides the author subject score for their contribution to the subject in question. The app could the update their score in the score table. */
+--Summary
+create view authSubScoreBook as
+SELECT
+    ss.subject_ID,
+    pr.review_score,
+    ab.author_ID
+FROM
+    scientific_subject AS ss
+    inner join publication_review as pr
+    INNER JOIN book_subject AS bs ON pr.book_ID = bs.book_ID
+    inner join author_book as ab on pr.book_ID = ab.book_ID
+WHERE
+    ss.subject_ID = bs.subject_ID;
+
+/*For Thesis*/
+create view authSubScoreThesis as
+SELECT
+    ss.subject_ID,
+    pr.review_score,
+    ath.author_ID
+FROM
+    scientific_subject AS ss
+    inner join publication_review as pr
+    INNER JOIN thesis_subject AS ts ON pr.thesis_ID = ts.thesis_ID
+    inner join author_thesis as ath on pr.thesis_ID = ath.thesis_ID
+WHERE
+    ss.subject_ID = ts.subject_ID;
+
+/*For Journal*/
+create view authSubScoreJournal as
+SELECT
+    ss.subject_ID,
+    pr.review_score,
+    aja.author_ID
+FROM
+    scientific_subject AS ss
+    inner join publication_review as pr
+    inner join journal_article_subject as jas on pr.journal_ID = jas.journal_ID
+    inner join author_journal_article as aja on pr.journal_ID = aja.journal_article_ID
+WHERE
+    ss.subject_ID = jas.subject_ID;
+
+/*For Conference Papers*/
+create view authSubScoreConf as
+SELECT
+    ss.subject_ID,
+    pr.review_score,
+    acpp.author_ID
+FROM
+    scientific_subject AS ss
+    inner join publication_review as pr
+    INNER JOIN conference_paper_proceedings_subject AS cpps ON pr.conference_paper_proceedings_ID = cpps.conference_paper_proceedings_ID
+    inner join author_conference_paper_proceedings as acpp on pr.conference_paper_proceedings_ID = acpp.conference_paper_proceedings_ID
+WHERE
+    ss.subject_ID = cpps.subject_ID;
+
+/*All Subject Review Scores*/
+create view allSubjectScores as(
+    select
+        *
+    from
+        authSubScoreConf
+    union
+    all
+    select
+        *
+    from
+        authSubScoreJournal
+    union
+    ALL
+    select
+        *
+    from
+        authSubScoreThesis
+    UNION
+    ALL
+    select
+        *
+    from
+        authSubScoreBook
+);
+
+/*example*/
+select
+    sum(review_score)
+from
+    allsubjectscores
+where
+    author_ID = 11
+    and subject_ID = 6
+    /*B16*/
+    --Summary
+    /* */
+    --Summary
+    /*B17*/
+    --Summary
+    /*In this instance, the user has changed their email address and would like this also to be changed in the system. This UPDATE query has successfully changed this for the user so that they are
+     still getting updates from the archive */
+    --Summary
+UPDATE
+    `user`
+SET
+    `email_address` = 'adam1@google.com'
+WHERE
+    `user`.`user_ID` = 1;
+
+/*B18*/
+--Summary
+/*In this instance, the user may no longer have a need for this publication to be in their library as they are working on other projects now. Therefore we have deleted the entry from the library making 
+ sure that is not getting deleted from other peoples library by identifying the user who has that publication specifically */
+--Summary
+DELETE FROM
+    user_library
+WHERE
+    `user_library`.`library_ID` = 20
+    AND user_ID = 4
+    /*B19*/
+    --Summary
+    /*The user may only want to see thesis' and therefore search via that type. They could then narrow this down further through their interests etc. */
+    --Summary
+SELECT
+    *
+FROM
+    thesis
+    /*B20*/
+    --Summary
+    /*These SELECT queries show how a user could use the system to generate books that are written by authors that they like or subjects that they are interested in */
+    --Summary
+SELECT
+    DISTINCT(b.book_ID),
+    b.book_title,
+    b.series_title,
+    a.author_first_name,
+    a.author_last_name,
+    b.series_number,
+    b.edition,
+    b.place_of_publication,
+    e.editor_first_name,
+    e.editor_last_name,
+    p.publisher_name,
+    b.year_of_publication,
+    b.hyperlink,
+    b.abstract,
+    b.DOI,
+    b.ISBN
+FROM
+    book AS b
+    INNER JOIN publisher AS p ON b.publisher_ID = p.publisher_ID
+    INNER JOIN editor_book AS eb ON eb.book_ID = b.book_ID
+    INNER JOIN editor AS e ON e.editor_ID = eb.editor_ID
+    INNER JOIN author_book AS ab ON ab.book_ID = b.book_ID
+    INNER JOIN author AS a ON a.author_ID = ab.author_ID
+WHERE
+    a.author_last_name = 'Johnson'
+SELECT
+    DISTINCT(b.book_ID),
+    b.book_title,
+    b.series_title,
+    a.author_first_name,
+    a.author_last_name,
+    b.series_number,
+    b.edition,
+    b.place_of_publication,
+    e.editor_first_name,
+    e.editor_last_name,
+    p.publisher_name,
+    b.year_of_publication,
+    b.hyperlink,
+    b.abstract,
+    b.DOI,
+    b.ISBN
+FROM
+    book AS b
+    INNER JOIN publisher AS p ON b.publisher_ID = p.publisher_ID
+    INNER JOIN editor_book AS eb ON eb.book_ID = b.book_ID
+    INNER JOIN editor AS e ON e.editor_ID = eb.editor_ID
+    INNER JOIN author_book AS ab ON ab.book_ID = b.book_ID
+    INNER JOIN author AS a ON a.author_ID = ab.author_ID
+    INNER JOIN publication_review AS pr ON pr.book_ID = b.book_ID
+    INNER JOIN user as u
+    INNER JOIN book_subject as bs on bs.book_ID = b.book_ID
+WHERE
+    bs.subject_ID = 10
