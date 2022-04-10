@@ -188,7 +188,7 @@ VALUES
         '2',
         'https://www.osti.gov/etdeweb/servlets/purl/20112710',
         'Five main objectives were assigned to the EC/CIS scientific collaborative programme: improvement of the knowledge of the relationship between doses and radiation-induced health effects; updating of the arrangements for off-site emergency management response (shot- and medium term)in the even of a future nuclear accident; assisting the relevant CIS Ministries alleviate the consequences of the Chernobyl accident, in particular in the field of restoration of contaminated territories; elaboration of a scientific basis to definite the content of Community assistance programmes; updating of the local technical infrastructure, and implementation of a large programme of exchange of scientists between both Communities. The topics addressed during the Conference mainly reflect the content of the joint collaborative programme: environmental transfer and decontamination, risk assessment and management, health related issues including dosimetry. The main aims of the Conference are to present the major achievements of the joint EC/CIS collaborative research programme (1992-1995) of the consequences of the Chernobyl accident, and to promote an objective evaluation of them by the international scientific community. The Conference is taking place close to the 10{sup th} anniversary of the accident and we hope it will contribute to more objective communication of the health and environmental consequences of the Chernobyl accident, and how these may be mitigated in future. The Conference is expected to be an important milestone in the series of meetings which will take place internationally around the 10{sup th} anniversary of the nuclear accident. It also provides a major opportunity for all participants to become acquainted with software developed within the framework of the collaborative programme, namely: Geographical Information Systems displaying contamination levels and dose-commitments; Decision Support Systems for the management of contaminated territories; Decision Support Systems for off-site emergency management (RODOS), etc.',
-        'EDB-01:001440'
+        '10.EDB-01:001440'
     );
 
 INSERT INTO
@@ -353,7 +353,7 @@ VALUES
         '66-67',
         'https://www.osti.gov/etdeweb/biblio/20147154',
         'In view of the considerable disparity in published values of the risk for bone cancers from ionising radiation, the article \'An analysis of bone and head sinus cancers in radium dial painters using a two-mutation carcinogenesis model\' by Leenhouts and Brugmans in the June 2000 issue of this Journal deserves further comment and consideration. The letter concludes that radiological protection and risk estimation has acquired an extra dimension, and it is clear that the risk of bone cancer from exposure to ionising radiation needs further review. Letter-to-the-editor.\r\n',
-        'GB01$0561012916'
+        '10.$0561012916'
     );
 
 INSERT INTO
@@ -629,7 +629,7 @@ VALUES
         '7',
         'https://ebookcentral.proquest.com/lib/aston/detail.action?docID=3339229',
         'A thorough exposition of quantum computing and the underlying concepts of quantum physics, with explanations of the relevant mathematics and numerous examples. The combination of two of the twentieth century\'s most influential and revolutionary scientific theories, information theory and quantum mechanics, gave rise to a radically new view of computing and information. Quantum information processing explores the implications of using quantum mechanics instead of classical mechanics to model information and its processing. Quantum computing is not about changing the physical substrate on which computation is done from classical to quantum but about changing the notion of computation itself, at the most basic level. The fundamental unit of computation is no longer the bit but the quantum bit or qubit. This comprehensive introduction to the field offers a thorough exposition of quantum computing and the underlying concepts of quantum physics, explaining all the relevant mathematics and offering numerous examples. With its careful development of concepts and thorough explanations, the book makes quantum computing accessible to students and professionals in mathematics, computer science, and engineering. A reader with no prior knowledge of quantum physics (but with sufficient knowledge of linear algebra) will be able to gain a fluent understanding by working through the book.\r\n\r\n',
-        '742513505',
+        '10.742513505',
         '9780262295390'
     );
 
@@ -739,7 +739,7 @@ VALUES
         '2021',
         'https://ethos.bl.uk/OrderDetails.do?uin=uk.bl.ethos.840149',
         'This thesis explores four projects applying supervised deep learning to help answer astrophysical questions. I first consider faint tidal features. Tidal features are a long-lasting signature of galaxy mergers, making them useful for measuring merger rates. However, current automated methods struggle to detect faint tidal features in complex galaxies. I use convolutional neural networks to identify galaxies with tidal features in the CFHTLS- Wide Survey, improving on previous methods applied to the same dataset. I show that my networks can identify which pixels are associated with tidal features, potentially enabling researchers to not only identify but also characterise tidal features. I then turn to Galaxy Zoo, a citizen science project measuring galaxy morphology. Galaxy Zoo is being gradually outpaced by the increasing scale of new surveys. Au- tomated classifiers can be trained using volunteer responses; however, such classifiers are often unable to consider uncertainty in either volunteer responses or predictions, leading to wasted volunteer effort and overconfident classifications. I introduce a probabilistic approach that allows classifiers to flexibly express uncertainty. I use this probabilistic approach to build a machine learning system that \'asks\' volunteers to label the galaxies it could best learn from. I relaunch Galaxy Zoo with images from the Dark Energy Camera Legacy Survey and run my system live, collecting 1.8 million volunteer responses. My final models are around 99% accurate on every question for galaxies with confident volunteer answers and are otherwise correctly uncertain. Next, I help the Canadian Hydrogen Intensity Mapping Experiment (CHIME) detect fast radio bursts. CHIME only attempts to detect FRB above a signal-to- noise threshold of σ = 8.5, in part for lack of expert time to review candidates. I created and launched a citizen science project to classify the 7.8 ≤ σ < 8.5 signal-to- noise candidates detected by CHIME each week. Candidates found by this project may be the most distant fast radio bursts ever detected, which I hope will serve as useful cosmological probes of the intergalactic medium. Finally, I show that neural network emulation can efficiently recover posteriors of galaxy parameters from photometry. Galaxy SED simulators are too slow to use MCMC inference on large samples. I train a neural network to emulate an SED simulator, providing both faster likelihood evaluations and known gradients. These gradients can then be used for efficient Hamiltonian Monte Carlo inference. Together, these projects show how deep learning can help astronomers make ef- fective use of limited and uncertain data.\r\n',
-        'uk.bl.ethos.840149'
+        '10.uk.bl.ethos.840149'
     );
 
 INSERT INTO
@@ -788,7 +788,7 @@ VALUES
         '2014',
         'https://ethos.bl.uk/OrderDetails.do?uin=uk.bl.ethos.699933',
         'In the ejecta from ONe novae outbursts nuclei up to A~40 are observed. The 30P(p,γ)31S reaction is thought to be the bottleneck for the production of all elements heavier than sulphur. However, due to uncertainties in the properties of key proton-unbound resonances the reaction rate is not well determined. In this thesis work, excited states in 31S were populated via the 28Si(4He,n) light-ion fusion-evaporation reaction and the prompt electromagnetic radiation was then detected with the GAMMASPHERE detector array. This γ-ray spectroscopy study, and comparisons with the stable mirror nucleus 31P, allowed the determination of the 31S level structure below the proton-emission threshold and also of the key proton-unbound states for the 30P(p,γ)31S reaction. In particular, transitions from key, low-spin states were observed for the first time. This new information was then used for the re-evaluation of the 30P(p,γ)31S reaction in the temperature range relevant for ONe novae. The newly calculated rate is higher than previous estimates implying a greater flux of material processed to high-Z elements in novae. Astrophysical X-ray bursts are thought to be a result of thermonuclear explosions on the atmosphere of an accreting neutron star. Between these bursts, energy is thought to be generated by the hot CNO cycles. The 15O(α,γ)19Ne reaction is one reaction that allows breakout from these CNO cycle and into the rp-process to fuel outbursts. The reaction is expected to be dominated by a single 3/2+ resonance at 4.033 MeV in 19Ne, however, limited information is available on this key state. This thesis work reports on a pioneering study of the 20Ne(p,d)19Ne reaction in inverse kinematics performed at the Experimental Storage Ring (ESR) as a means of accessing the 4.033-MeV state in 19Ne. The unique background free, high luminosity conditions of the ESR were utilised for this, the first transfer reaction performed at the ESR. The results of this pioneering test experiment are presented along with suggestions for future measurements at storage ring facilities.\r\n',
-        'uk.bl.ethos.699933 	'
+        '10.uk.bl.ethos.699933 	'
     );
 
 INSERT INTO
@@ -846,6 +846,7 @@ INSERT INTO
         `user_ID`,
         `user_name`,
         `isauthor`,
+        author_ID,
         `isreader`,
         `user_first_name`,
         `user_last_name`,
@@ -858,6 +859,7 @@ VALUES
         '2',
         'dav_wright',
         '1',
+        '11',
         '1',
         'Dave',
         'Wright',
@@ -1259,11 +1261,131 @@ VALUES
 INSERT INTO
     `weightings` (`weighting_ID`, `weighting`)
 VALUES
-    ('w1', '0.1'),
-    ('w2', '0.2'),
-    ('w3', '0.3'),
-    ('w4', '0.4'),
-    ('w5', '0.5'),
-    ('w6', '0.6');
+    ('w1', '0.04'),
+    ('w2', '0.09'),
+    ('w3', '0.14'),
+    ('w4', '0.19'),
+    ('w5', '0.24'),
+    ('w6', '0.30');
 
-average = 104 / 15 = 6.93 * w1(0.1) = 0.69 average = 104 / 15 = 6.93 * w2(0.2) = 1.38 average = 104 / 15 = 6.93 * w3(0.3) = 2.07 average = 104 / 15 = 6.93 * w4(0.4) = 2.77 average = 104 / 15 = 6.93 * w5(0.5) = 3.46 average = 104 / 15 = 6.93 * w6(0.6) = 4.15
+INSERT INTO
+    `publication_review` (
+        `pub_rev_ID`,
+        `user_ID`,
+        `review_score`,
+        `short_review`,
+        `conference_paper_proceedings_ID`,
+        `publication_type`,
+        `book_ID`,
+        `journal_ID`,
+        `thesis_ID`
+    )
+VALUES
+    (
+        '18',
+        '2',
+        '8',
+        'Great',
+        NULL,
+        NULL,
+        '3',
+        NULL,
+        NULL
+    );
+
+INSERT INTO
+    `user_subject_interests` (
+        `user_subject_interests_ID`,
+        `user_ID`,
+        `subject_ID`
+    )
+VALUES
+    ('15', '3', '1');
+
+INSERT INTO
+    `publication_review` (
+        `pub_rev_ID`,
+        `user_ID`,
+        `review_score`,
+        `short_review`,
+        `conference_paper_proceedings_ID`,
+        `publication_type`,
+        `book_ID`,
+        `journal_ID`,
+        `thesis_ID`
+    )
+VALUES
+    (
+        '19',
+        '3',
+        '8',
+        NULL,
+        '1',
+        NULL,
+        NULL,
+        NULL,
+        NULL
+    );
+
+UPDATE
+    `user`
+SET
+    `last_system_access` = '2022-02-14 15:43:24'
+WHERE
+    `user`.`user_ID` = 1;
+
+UPDATE
+    `user`
+SET
+    `last_system_access` = '2022-04-05 11:15:51'
+WHERE
+    `user`.`user_ID` = 2;
+
+UPDATE
+    `user`
+SET
+    `last_system_access` = '2022-04-04 09:30:23'
+WHERE
+    `user`.`user_ID` = 3;
+
+UPDATE
+    `publication_review`
+SET
+    `short_review` = 'Loved it!'
+WHERE
+    `publication_review`.`pub_rev_ID` = 10;
+
+UPDATE
+    `publication_review`
+SET
+    `review_score` = '10'
+WHERE
+    `publication_review`.`pub_rev_ID` = 10;
+
+UPDATE
+    `user`
+SET
+    `author_ID` = '8'
+WHERE
+    `user`.`user_ID` = 3;
+
+INSERT INTO
+    `user_library` (
+        `library_ID`,
+        `user_ID`,
+        `last_access`,
+        `conference_paper_proceedings_ID`,
+        `book_ID`,
+        `journal_ID`,
+        `thesis_ID`
+    )
+VALUES
+    (
+        '16',
+        '3',
+        '2022-04-10 18:21:43.000000',
+        '2',
+        NULL,
+        NULL,
+        NULL
+    );
