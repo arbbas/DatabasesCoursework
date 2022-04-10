@@ -1389,3 +1389,117 @@ VALUES
         NULL,
         NULL
     );
+
+INSERT INTO
+    `book` (
+        `book_ID`,
+        `book_title`,
+        `series_title`,
+        `series_number`,
+        `edition`,
+        `place_of_publication`,
+        `year_of_publication`,
+        `publisher_ID`,
+        `hyperlink`,
+        `abstract`,
+        `DOI`,
+        `ISBN`
+    )
+VALUES
+    (
+        '4',
+        'Learning with games',
+        'GameLearningSeries',
+        '1',
+        '1',
+        'London',
+        '2021',
+        '5',
+        '',
+        '',
+        NULL,
+        NULL
+    );
+
+INSERT INTO
+    `book_subject` (`book_subject_ID`, `subject_ID`, `book_ID`)
+VALUES
+    ('6', '1', '4');
+
+INSERT INTO
+    `user_library` (
+        `library_ID`,
+        `user_ID`,
+        `last_access`,
+        `conference_paper_proceedings_ID`,
+        `book_ID`,
+        `journal_ID`,
+        `thesis_ID`
+    )
+VALUES
+    (
+        '18',
+        '3',
+        '2022-04-10 22:13:34.000000',
+        NULL,
+        '4',
+        NULL,
+        NULL
+    );
+
+INSERT INTO
+    `book` (
+        `book_ID`,
+        `book_title`,
+        `series_title`,
+        `series_number`,
+        `edition`,
+        `place_of_publication`,
+        `year_of_publication`,
+        `publisher_ID`,
+        `hyperlink`,
+        `abstract`,
+        `DOI`,
+        `ISBN`
+    )
+VALUES
+    (
+        '5',
+        'Gamification Learning Processes for Children Under 5',
+        'Learning School',
+        '1',
+        '2',
+        'Florida, USA',
+        '2021',
+        '6',
+        '',
+        '',
+        NULL,
+        NULL
+    );
+
+INSERT INTO
+    `book_subject` (`book_subject_ID`, `subject_ID`, `book_ID`)
+VALUES
+    ('7', '1', '5');
+
+INSERT INTO
+    `user_library` (
+        `library_ID`,
+        `user_ID`,
+        `last_access`,
+        `conference_paper_proceedings_ID`,
+        `book_ID`,
+        `journal_ID`,
+        `thesis_ID`
+    )
+VALUES
+    (
+        '19',
+        '3',
+        '2022-04-10 22:22:18.000000',
+        NULL,
+        '5',
+        NULL,
+        NULL
+    );
