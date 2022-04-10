@@ -1,0 +1,327 @@
+/*This shows all of the user history for the user 3*/
+CREATE VIEW user_3_lib AS
+SELECT
+    *
+FROM
+    user_library
+WHERE
+    user_ID = 3;
+
+/*shows user 3 lib*/
+SELECT
+    *
+FROM
+    user_3_lib;
+
+/*shows everything not in the user library*/
+CREATE VIEW user_3_unread_conferences AS
+SELECT
+    conference_paper_proceedings_ID
+FROM
+    conference_paper_proceedings
+WHERE
+    conference_paper_proceedings.conference_paper_proceedings_ID !=(
+        SELECT
+            user_3_lib.conference_paper_proceedings_ID
+        FROM
+            user_3_lib
+        WHERE
+            conference_paper_proceedings_ID IS NOT NULL
+    )
+    /*Shows users unread conferences*/
+SELECT
+    *
+FROM
+    user_3_unread_conferences;
+
+/*Find author ID of user if they are an author = null as not an author here*/
+SELECT
+    author_ID
+FROM
+    user
+WHERE
+    user_ID = 3 -- 
+    /*finds all of the conference paper proceedings that have been written by the user and finds out if the user has written the publication were going to recommend*/
+SELECT
+    *
+from
+    author_conference_paper_proceedings
+where
+    author_id = 8 -- 
+    /*publication 1 selected as suitable candidate*/
+    /*finds the average of everything in publication table*/
+    /*W1 requirement*/
+SELECT
+    AVG(review_score)
+from
+    publication_review
+    /*finds average of selected publication*/
+SELECT
+    AVG(review_score)
+from
+    publication_review
+where
+    conference_paper_proceedings_ID = 1
+    /* = 9 * w1*/
+    /*all the users with an interest in that subject and then sum the scores given by them create view subject_1_user_group*/
+    /*Find out the subject ID of the desired conference which is 1*/
+SELECT
+    subject_ID
+FROM
+    conference_paper_proceedings_subject
+WHERE
+    conference_paper_proceedings_ID = 1
+    /*Find all the users with an interest in that subject and then sum the scores given by them create view subject_1_user_group*/
+    /*W2 requirement*/
+    CREATE VIEW subject_1_user_group AS
+SELECT
+    user_ID
+FROM
+    user_subject_interests
+where
+    subject_ID = 1
+    /*Finds if they are interested in the subject and they are*/
+SELECT
+    SUM(review_score)
+FROM
+    publication_review as pr
+    INNER JOIN subject_1_user_group as s1 on s1.user_ID = pr.user_ID
+WHERE
+    conference_paper_proceedings_ID = 1 -- 8 * w2
+    /*W3 requirement*/
+    CREATE VIEW authorConferenceView AS
+SELECT
+    conference_paper_proceedings_ID
+FROM
+    author_conference_paper_proceedings
+WHERE
+    author_ID = 8;
+
+SELECT
+    COUNT(acpp.author_ID) as "No. Co-Author"
+FROM
+    author_conference_paper_proceedings as acpp
+    INNER JOIN authorConferenceView as abv on acpp.conference_paper_proceedings_ID = abv.conference_paper_proceedings_ID
+WHERE
+    acpp.conference_paper_proceedings_ID = 1
+    and acpp.author_ID != 1 -- 0 * w3
+    /*W4 Requirement/
+     /*For Book*/
+    create view authSubScoreBook as
+SELECT
+    ss.subject_ID,
+    pr.review_score,
+    ab.author_ID
+FROM
+    scientific_subject AS ss
+    inner join publication_review as pr
+    INNER JOIN book_subject AS bs ON pr.book_ID = bs.book_ID
+    inner join author_book as ab on pr.book_ID = ab.book_ID
+WHERE
+    ss.subject_ID = bs.subject_ID;
+
+/*For Thesis*/
+create view authSubScoreThesis as
+SELECT
+    ss.subject_ID,
+    pr.review_score,
+    ath.author_ID
+FROM
+    scientific_subject AS ss
+    inner join publication_review as pr
+    INNER JOIN thesis_subject AS ts ON pr.thesis_ID = ts.thesis_ID
+    inner join author_thesis as ath on pr.thesis_ID = ath.thesis_ID
+WHERE
+    ss.subject_ID = ts.subject_ID;
+
+/*For Journal*/
+create view authSubScoreJournal as
+SELECT
+    ss.subject_ID,
+    pr.review_score,
+    aja.author_ID
+FROM
+    scientific_subject AS ss
+    inner join publication_review as pr
+    inner join journal_article_subject as jas on pr.journal_ID = jas.journal_ID
+    inner join author_journal_article as aja on pr.journal_ID = aja.journal_article_ID
+WHERE
+    ss.subject_ID = jas.subject_ID;
+
+/*For Conference Papers*/
+create view authSubScoreConf as
+SELECT
+    ss.subject_ID,
+    pr.review_score,
+    acpp.author_ID
+FROM
+    scientific_subject AS ss
+    inner join publication_review as pr
+    INNER JOIN conference_paper_proceedings_subject AS cpps ON pr.conference_paper_proceedings_ID = cpps.conference_paper_proceedings_ID
+    inner join author_conference_paper_proceedings as acpp on pr.conference_paper_proceedings_ID = acpp.conference_paper_proceedings_ID
+WHERE
+    ss.subject_ID = cpps.subject_ID;
+
+/*All Subject Review Scores*/
+create view allSubjectScores as(
+    select
+        *
+    from
+        authSubScoreConf
+    union
+    ALL
+    select
+        *
+    from
+        authSubScoreJournal
+    union
+    ALL
+    select
+        *
+    from
+        authSubScoreThesis
+    UNION
+    ALL
+    select
+        *
+    from
+        authSubScoreBook
+);
+
+/*Filter*/
+select
+    sum(review_score)
+from
+    allSubjectScores
+where
+    author_ID = 1
+    and subject_ID = 1
+    /*W4 = 18 * w4
+     /*      Task 5 : */
+    /*PT1: Find all items the user has already read (are listed in the user’s library).*/
+    CREATE VIEW user_3_lib AS
+SELECT
+    *
+FROM
+    user_library
+WHERE
+    user_ID = 3;
+
+/*PT2: From that list, count the number of items that share at least one author with the item we want to recommend.*/
+/*To find conferences with shared authors*/
+CREATE VIEW shared_auth_conf AS
+SELECT
+    COUNT(ul.conference_paper_proceedings_ID) AS No.SharedConfs
+FROM
+    user_3_lib AS ul
+    INNER JOIN author_conference_paper_proceedings AS acpp ON ul.conference_paper_proceedings_ID = acpp.conference_paper_proceedings_ID
+WHERE
+    acpp.author_ID = 1;
+
+SELECT
+    *
+FROM
+    shared_auth_conf;
+
+/*Finds thesis with shared authors*/
+CREATE VIEW shared_auth_thesis AS
+SELECT
+    COUNT(ul.thesis_ID) AS No.SharedThesis
+FROM
+    user_3_lib AS ul
+    INNER JOIN author_thesis AS ath ON ul.thesis_ID = ath.thesis_ID
+WHERE
+    ath.author_ID = 1;
+
+SELECT
+    *
+FROM
+    shared_auth_thesis;
+
+/*To find journals with shared authors*/
+CREATE VIEW shared_auth_journal AS
+SELECT
+    COUNT(ul.journal_ID) AS No.SharedJournals
+FROM
+    user_3_lib AS ul
+    INNER JOIN author_journal_article AS aj ON ul.journal_ID = aj.journal_ID
+WHERE
+    aj.author_ID = 1;
+
+SELECT
+    *
+FROM
+    shared_auth_journal;
+
+/*Finds books with shared authors*/
+CREATE VIEW shared_auth_book AS
+SELECT
+    COUNT(ul.book_ID) AS No.SharedBooks
+FROM
+    user_3_lib AS ul
+    INNER JOIN author_book AS ab ON ul.journal_ID = ab.book_ID
+WHERE
+    ab.author_ID = 1;
+
+SELECT
+    *
+FROM
+    shared_auth_book
+    /* Output is 1 * w5*/
+    /*PT3: Count those with at least one matching subject to the item we want to recommend. 
+     Multiply the two numbers by w5 and w6 respectively, and add them to the previous result.*/
+    /*Finds conferences with the same subject in users library*/
+    CREATE VIEW numberOfConfsWithSubject AS
+SELECT
+    COUNT(ul.conference_paper_proceedings_ID) AS No_ConfsWithSubject
+FROM
+    user_3_lib AS ul
+    INNER JOIN conference_paper_proceedings_subject AS cpps ON ul.conference_paper_proceedings_ID = cpps.conference_paper_proceedings_ID
+    INNER JOIN scientific_subject AS s ON s.subject_ID = ts.subject_ID
+WHERE
+    s.subject_ID = 1
+SELECT
+    *
+FROM
+    numberOfConfsWithSubject
+    /*Finds number of thesis with shared subject in users library*/
+    CREATE VIEW numberOfThesisWithSubject AS
+SELECT
+    COUNT(ul.thesis_ID) AS No_ThesisWithSubject
+FROM
+    user_3_lib AS ul
+    INNER JOIN thesis_subject AS ts ON ul.thesis_ID = ts.thesis_ID
+    INNER JOIN scientific_subject AS s ON s.subject_ID = ts.subject_ID
+WHERE
+    s.subject_ID = 1
+SELECT
+    *
+FROM
+    numberOfThesisWithSubject
+    /*Finds number of journals with subject in users library*/
+    CREATE VIEW numberOfJournalsWithSubject AS
+SELECT
+    COUNT(ul.journal_ID) AS No_JournalsWithSubject
+FROM
+    user_3_lib AS ul
+    INNER JOIN journal_article_subject AS js ON ul.journal_ID = js.journal_ID
+    INNER JOIN scientific_subject AS s ON s.subject_ID = js.subject_ID
+WHERE
+    s.subject_ID = 1
+SELECT
+    *
+FROM
+    numberOfJournalsWithSubject CREATE VIEW numberOfBooksWithSubject AS
+SELECT
+    COUNT(ul.book_ID) AS No_BooksWithSubject
+FROM
+    user_3_lib AS ul
+    INNER JOIN book_subject AS bs ON ul.book_ID = bs.book_ID
+    INNER JOIN scientific_subject AS s ON s.subject_ID = bs.subject_ID
+WHERE
+    s.subject_ID = 1
+SELECT
+    *
+FROM
+    numberOfBooksWithSubject
+    /*Generates score of 2 * w6*/
