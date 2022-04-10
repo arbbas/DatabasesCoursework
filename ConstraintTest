@@ -1,3 +1,4 @@
+/*To test the UNIQUE constraint*/
 INSERT INTO
     publisher (publisher_ID, publisher_name, publisher_location)
 VALUES
@@ -8,31 +9,31 @@ INSERT INTO
 VALUES
     (1, 'Penguin', 'London, UK');
 
-/*To test the UNIQUE constraint*/
+/*For later in the test*/
 DELETE FROM
     publisher
 WHERE
     publisher_ID = 1;
 
-/*For later in the test*/
+/*To test the lentgth of the INT which should be 8*/
 INSERT INTO
     publisher (publisher_ID, publisher_name, publisher_location)
 VALUES
     (123456789, 'Routledge', 'Florida, USA');
 
-/*To test the lentgth of the INT which should be 8*/
+/*To test NOT NULL*/
 INSERT INTO
     publisher (publisher_ID, publisher_name, publisher_location)
 VALUES
     (12, NULL, 'Florida, USA');
 
-/*To test NOT NULL*/
+/*To test length of VARCHAR which is 40*/
 INSERT INTO
     editor (editor_ID, editor_first_name, editor_last_name)
 VALUES
     (1, 'Bou-Keiuakahihuliheekahaunaeledase', 'Lu');
 
-/*To test length of VARCHAR which is 40*/
+/*To test date range which should be 2 or 4 characters*/
 INSERT INTO
     `thesis` (
         `thesis_ID`,
@@ -56,7 +57,7 @@ VALUES
         'uk.bl.ethos.699933 	'
     );
 
-/*To test date range which should be 2 or 4 characters*/
+/*To test CHECK constraint for review_score value to be between 1 and 10*/
 INSERT INTO
     `publication_review` (
         `pub_rev_ID`,
@@ -82,7 +83,7 @@ VALUES
         NULL
     );
 
-/*To test CHECK constraint for review_score value to be between 1 and 10*/
+/*To check the foreign key constraint for publisher_ID*/
 INSERT INTO
     publisher (publisher_ID, publisher_name, publisher_location)
 VALUES
@@ -120,4 +121,61 @@ VALUES
         '10.1109/IIAI-AAI.2016.152'
     );
 
-/*To check the foreign key constraint for publisher_ID*/
+/*To check for the default constraint*/
+INSERT INTO
+    `user` (
+        `user_ID`,
+        `user_name`,
+        `isauthor`,
+        `isreader`,
+        `user_first_name`,
+        `user_last_name`,
+        `phone_number`,
+        `email_address`,
+        `contact_preference`
+    )
+VALUES
+    (
+        '5',
+        'Sambik66',
+        '1',
+        '1',
+        'Samuel',
+        'Ilions',
+        '09857419384',
+        'sam@google.com',
+        DEFAULT
+    );
+
+/*To check for valid DOI*/
+INSERT INTO
+    conference_paper_proceedings (
+        conference_paper_proceedings_ID,
+        conference_paper_title,
+        title_of_conference,
+        place_of_publication,
+        year_of_publication,
+        publisher_ID,
+        hyperlink,
+        abstract,
+        DOI
+    )
+VALUES
+    (
+        7,
+        'Development of a Digital Game-Based Learning System with Graduated Prompting Strategy for Math Course',
+        'IIAI International Conference on Advanced Applied Informatics (IIAIAAI)',
+        'Kumamoto, Japan',
+        2016,
+        1,
+        'https://ieeexplore.ieee.org/document/7557647',
+        'Many studies indicated that digital game-based learning can enhance students learning motivation effectively,
+        but it also needs appropriate tools
+        or strategies to improve the learning achievement.The purpose of this study is to develop a digital game - based learning system with a graduated prompting strategy,
+        so that students can consolidate concepts
+        and skills of problem - solving,
+        and further strength retention
+        and transfer by graduated prompting strategy progressively
+        and repeatedly.This study investigates the influence of students learning motivation and achievement by using the proposed digital game-based learning system in the math courses.',
+        '1109/IIAI-AAI.2016.152'
+    );
